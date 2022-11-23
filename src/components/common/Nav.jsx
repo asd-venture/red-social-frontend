@@ -9,6 +9,7 @@ import {
 import { useAuth0 } from '@auth0/auth0-react'
 import LogoutButton from './LogoutButton'
 import '../../styles/nav.css'
+import perfilDefault from '../../assets/perfilDefault.webp'
 
 const Nav = () => {
 
@@ -18,7 +19,7 @@ const Nav = () => {
         <nav>
             <div>
                 <img src={user.picture} onError={event=>{
-                        event.target.src = "../../assets/perfilDefault.webp"
+                        event.target.src = perfilDefault
                         event.onerror = null
                     }} 
                 />
