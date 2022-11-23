@@ -27,10 +27,10 @@ const Nav = () => {
             </div>
 
             <div>
-                <NavLink to='/home' activeclassname='active'>
+                <NavLink to='/home' className='linkNav' activeclassname='active'>
                     Home
                 </NavLink>
-                <NavLink to='/Profile' activeclassname='active'>
+                <NavLink to='/Profile' className='linkNav' activeclassname='active'>
                     Profile
                 </NavLink>
             </div>
