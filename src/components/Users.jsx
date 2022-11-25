@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react';
 import '../styles/users.css'
+import perfilDefault from '../assets/perfilDefault.webp'
 
 const Users = () => {
 
@@ -26,10 +27,16 @@ const Users = () => {
     return (
         <div>
             { users &&
-                users.map(usersProfile=>(
-                    <p key={usersProfile.username}>
-                        {user.nickname == usersProfile.username ? '' : usersProfile.username}
-                    </p>
+                users.map(usersProfile=>( 
+                    user.email == usersProfile.email ? '' 
+                        : 
+                    <div key={usersProfile.email} className='otherUsers'>
+                        <img src={usersProfile.picture} onError={event=>{
+                            event.target.src = perfilDefault
+                            event.onerror = null
+                        }}/>
+                        <p> {usersProfile.username} </p>        
+                    </div>
                 ))
             }
         </div>

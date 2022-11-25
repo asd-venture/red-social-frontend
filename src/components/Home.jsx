@@ -12,7 +12,7 @@ const Home = () => {
   const data = {
     username: user.nickname,
     email: user.email,
-    fullname: user.name
+    picture: user.picture
   }
   const url = "http://localhost:3000/users";
   useEffect(()=>{

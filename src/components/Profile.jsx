@@ -23,17 +23,18 @@ const Profile = () => {
             <div>
 
                 <Nav/>
+                <div>
+                    <img src={user.picture} onError={event=>{
+                        event.target.src = perfilDefault
+                        event.onerror = null
+                    }} />
+                    <h2> {user.name} </h2>
+                    <p> {user.email} </p>
+                </div>
 
-                <img src={user.picture} onError={event=>{
-                    event.target.src = perfilDefault
-                    event.onerror = null
-                }} />
-                <h2> {user.name} </h2>
-                <p> {user.email} </p>
-
-                <pre>
+                <div>
                     {JSON.stringify(user)}
-                </pre>
+                </div>
             </div>
 
         )
