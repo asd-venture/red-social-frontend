@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import perfilDefault from '../assets/perfilDefault.webp'
 import Nav from './common/Nav'
+import Posts from './Posts'
+import '../styles/profile.css'
+import perfilDefault from '../assets/perfilDefault.webp'
 
 const Profile = () => {
 
@@ -23,7 +25,7 @@ const Profile = () => {
             <div>
 
                 <Nav/>
-                <div>
+                <div className="profile">
                     <img src={user.picture} onError={event=>{
                         event.target.src = perfilDefault
                         event.onerror = null
@@ -32,11 +34,13 @@ const Profile = () => {
                     <p> {user.email} </p>
                 </div>
 
-                <div>
-                    {JSON.stringify(user)}
+                <div className='profilePosting'>
+                    <div>
+                        {JSON.stringify(user)}
+                    </div>
+                    <Posts/>
                 </div>
             </div>
-
         )
     )
 }

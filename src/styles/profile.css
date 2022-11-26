@@ -1,0 +1,11 @@
+.profile{
+    padding: 1em;
+}
+
+.profilePosting{
+    display: flex;
+}
+
+.profilePosting div{
+    padding: 1em;
+}
