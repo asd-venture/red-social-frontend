@@ -1,3 +1,22 @@
+.users{
+    height: 25em;
+    padding: 1em;
+    margin: 3em;
+    display: flex;
+    justify-content: right;
+    overflow-y: scroll;
+    overflow: overlay;
+}
+
 .otherUsers{
     display: flex;
+}
+
+.otherUsers p{
+    padding: 1em;
+}
+
+.usersPerfilPicture{
+    width: 5vh;
+    padding: 1em;
 }

@@ -25,20 +25,22 @@ const Users = () => {
     }, [])
 
     return (
-        <div>
-            { users &&
-                users.map(usersProfile=>( 
-                    user.email == usersProfile.email ? '' 
-                        : 
-                    <div key={usersProfile.email} className='otherUsers'>
-                        <img src={usersProfile.picture} onError={event=>{
-                            event.target.src = perfilDefault
-                            event.onerror = null
-                        }}/>
-                        <p> {usersProfile.username} </p>        
-                    </div>
-                ))
-            }
+        <div className='users'>
+            <div className='boxUsers'>
+                { users &&
+                    users.map(usersProfile=>( 
+                        user.email == usersProfile.email ? '' 
+                            : 
+                        <div key={usersProfile.email} className='otherUsers'>
+                            <img src={usersProfile.picture} className='usersPerfilPicture' onError={event=>{
+                                event.target.src = perfilDefault
+                                event.onerror = null
+                            }}/>
+                            <p> {usersProfile.username} </p>        
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     )
 }

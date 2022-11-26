@@ -35,7 +35,7 @@ const Home = () => {
   }, [])
   
   return (
-    <div>
+    <div className='home'>
         <Nav/>
         <div className='article'>
           <Posts/>

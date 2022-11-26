@@ -1,7 +1,10 @@
-div{
-    border: 1px solid;
+.home{
+    display: grid;
+    grid-template-rows: auto;
+    row-gap: 2em;
 }
 
 .article{
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
 }

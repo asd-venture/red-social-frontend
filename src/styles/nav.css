@@ -1,6 +1,12 @@
 nav{
     display: flex;
     justify-content: space-between;
+    padding: 1em;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.13);
+}
+
+nav p{
+    padding: 1em;
 }
 
 nav div{
@@ -19,11 +25,27 @@ nav div{
     background-color: #393939;
 }
 
-img{
+nav div img{
     width: 5vh;
     padding: 1em;
 }
 
-p{
-    padding: 1em;
-}
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-weight: 500;
+    font-size: 1em;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  
+  button:hover {
+    background-color: #646cff;
+  }
+  button:focus,
+  button:focus-visible {
+    outline: none;
+  }
