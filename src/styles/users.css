@@ -1,22 +1,54 @@
 .users{
-    height: 25em;
-    padding: 1em;
-    margin: 3em;
-    display: flex;
-    justify-content: right;
+    grid-area: users;
+    height: 85vh;
+    width: 90%;
+    display: grid;
+}
+
+.other{
+    text-align: center;
+    padding: 5vh 1vh;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+}
+
+.boxUsers{
+    padding: 2vh;
     overflow-y: scroll;
     overflow: overlay;
 }
 
 .otherUsers{
     display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0 3vh;
+    border-radius: 1%;
 }
 
 .otherUsers p{
-    padding: 1em;
+    padding: 2vh 0;
+    margin: 2vh;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .usersPerfilPicture{
-    width: 5vh;
-    padding: 1em;
+    width: 4vh;
+    /* padding: 1em; */
+}
+
+@media (prefers-color-scheme: dark) {
+    .other{
+        border: 1px solid rgba(128, 128, 128, 0.203);
+    }
+
+    .boxUsers{
+        border: 1px solid rgba(128, 128, 128, 0.253);
+    }
+
+    .other h1{
+        color: white;
+    }
 }

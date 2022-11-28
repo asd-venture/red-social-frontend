@@ -1,13 +1,13 @@
 .posts{
-    height: 29em;
-    width: 50em;
-    padding: 1em;
-    margin: 1em;
+    grid-area: posts;
+    height: 71vh;
+    padding: 3vh;
     overflow-y: scroll; 
 }
 
 .postBox{
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(217, 217, 217, 0.448);
 }
 
 .userPost{
@@ -19,8 +19,8 @@
 }
 
 .userPost img{
-    width: 3em;
-    height: 3em;
+    width: 10vh;
+    height: 10vh;
 }
 
 .nameEmail{
@@ -28,7 +28,17 @@
 }
 
 .contentPost{
-    padding: 3rem;
+    padding: 2rem 8rem;
     margin: 3vh 0;
     border: 1px solid rgba(128, 128, 128, 0.253);
+}
+
+.LikeComment{
+    padding: 1vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.LikeComment p{
+    cursor: pointer;
 }

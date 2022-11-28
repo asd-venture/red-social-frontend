@@ -26,6 +26,9 @@ const Users = () => {
 
     return (
         <div className='users'>
+            <div className='other'>
+                <h1>Other Users</h1>
+            </div>
             <div className='boxUsers'>
                 { users &&
                     users.map(usersProfile=>( 

@@ -11,9 +11,11 @@ import LogoutButton from './LogoutButton'
 import '../../styles/nav.css'
 import perfilDefault from '../../assets/perfilDefault.webp'
 
-const Nav = () => {
+const Nav = ({userid}) => {
 
     const { user } = useAuth0()
+
+    const urlProfile = `/profile/${userid}`
 
     return (
         <nav>
@@ -30,7 +32,7 @@ const Nav = () => {
                 <NavLink to='/home' className='linkNav' activeclassname='active'>
                     Home
                 </NavLink>
-                <NavLink to='/Profile' className='linkNav' activeclassname='active'>
+                <NavLink to={urlProfile} className='linkNav' activeclassname='active'>
                     Profile
                 </NavLink>
             </div>
