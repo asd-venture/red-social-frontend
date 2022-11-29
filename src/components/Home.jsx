@@ -4,6 +4,7 @@ import Nav from './common/Nav'
 import Users from './Users'
 import NewPost from './NewPost'
 import Posts from './Posts'
+import Loading from './Loading'
 import '../styles/home.css'
 
 const Home = () => {
@@ -38,13 +39,15 @@ const Home = () => {
   useEffect(()=>{
     apiData();
   }, [])
+
+  if (id == undefined) return <Loading/>
   
   return (
     <div>
       {id &&
         <div className='home'>
-          <Nav userid={id.user.id}/>
-          <NewPost/>
+          <Nav/>
+          <NewPost />
           <Posts/>
           <Users/>
         </div>

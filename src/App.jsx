@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import './App.css'
 import Home from './components/Home'
 import Loading from './components/Loading'
@@ -39,6 +34,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/home' element={<Home/>} />
+            <Route path='/profile' element={<Profile/>} />
             <Route path='/profile/:id' element={<Profile/>} />
           </Routes>
               :

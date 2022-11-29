@@ -1,0 +1,28 @@
+.userPosts{
+    grid-area: userPosts;
+    height: 46vh;
+    overflow-y: scroll;
+    overflow: overlay;
+}
+
+.anotherUserPosts{
+    grid-area: userPosts;
+    height: 70vh;   
+    overflow-y: scroll;
+    overflow: overlay;
+}
+
+.userPosts h1{
+    padding: 10vh;
+}
+
+.anotherUserPosts h1{
+    padding: 10vh;  
+}
+
+@media (prefers-color-scheme: dark) {
+    
+    .userPosts{
+        border: 1px solid rgba(128, 128, 128, 0.253);
+    }
+}

@@ -27,7 +27,7 @@ const Posts = () => {
       { posts &&
           posts.map(lastPosts=>(
 
-            <div className='postBox'>
+            <div key={lastPosts.id} className='postBox'>
                 <div className='userPost'>
                   <img src={lastPosts.picture} onError={event=>{
                             event.target.src = perfilDefault

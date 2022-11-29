@@ -1,0 +1,40 @@
+.toPost{
+    grid-area: toPost;
+    width: 100%;
+    height: 100%;
+    padding: 2vh;
+}
+
+.toPost h1{
+    text-align: center;
+    padding: 4vh;
+    font-size: 6vh;
+}
+
+.toPost form{
+    width: 100%;
+    display: grid;
+}
+
+.toPost form input{
+    width: 100%;
+    font-size: 2vh;
+    padding: 1.5vh 0;
+    margin: 1vh;
+}
+
+.toPost form button{
+    justify-self: right;
+}
+
+@media (prefers-color-scheme: dark) {
+    
+    .toPost{
+        border: 1px solid rgba(128, 128, 128, 0.253);
+    }
+    
+
+    .toPost h1{
+        color: white;
+    }
+}

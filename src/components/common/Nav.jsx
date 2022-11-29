@@ -1,21 +1,13 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  NavLink
-} from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { useAuth0 } from '@auth0/auth0-react'
 import LogoutButton from './LogoutButton'
 import '../../styles/nav.css'
 import perfilDefault from '../../assets/perfilDefault.webp'
 
-const Nav = ({userid}) => {
+const Nav = () => {
 
     const { user } = useAuth0()
-
-    const urlProfile = `/profile/${userid}`
 
     return (
         <nav>
@@ -32,7 +24,7 @@ const Nav = ({userid}) => {
                 <NavLink to='/home' className='linkNav' activeclassname='active'>
                     Home
                 </NavLink>
-                <NavLink to={urlProfile} className='linkNav' activeclassname='active'>
+                <NavLink to='/profile' className='linkNav' activeclassname='active'>
                     Profile
                 </NavLink>
             </div>

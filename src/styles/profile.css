@@ -5,6 +5,36 @@
     grid-template-areas: 
     "nav nav nav"
     "userProfile toPost toPost"
+    "userProfile userPosts userPosts"
     "userProfile userPosts userPosts";
     column-gap: 3vh;
+    row-gap: 2vh;
+}
+
+.profileUser{
+    grid-area: userProfile;
+    text-align: center;
+}
+
+.profileUser img{
+    width: 20vh;
+    margin: 5vh;
+}
+
+.profileUser h2{
+    margin: 3vh;
+}
+
+.profileUser p{
+    margin: 3vh;
+}
+
+@media (prefers-color-scheme: dark) {
+    .profileUser{
+        border: 1px solid rgba(128, 128, 128, 0.253);
+    }
+
+    .profile h2{
+        color: white;
+    }
 }

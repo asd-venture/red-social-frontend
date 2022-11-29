@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Arvo', serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -32,7 +32,7 @@ div{
 }
 
 a {
-  font-weight: bold;
+  font-weight: bolder;
   color: rgb(40, 40, 40);
 }
 a:hover {
