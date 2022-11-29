@@ -1,8 +1,8 @@
 .toPost{
     grid-area: toPost;
-    width: 100%;
     height: 100%;
     padding: 2vh;
+    margin-right: 2vh;
 }
 
 .toPost h1{
@@ -23,8 +23,25 @@
     margin: 1vh;
 }
 
-.toPost form button{
+.toPost form button {
     justify-self: right;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 2vh 3vh;
+    font-weight: 500;
+    font-size: 1em;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+  
+.toPost form button:hover {
+    background-color: #646cff;
+}
+.toPost form button:focus,
+.toPost form button:focus-visible {
+    outline: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,9 +49,20 @@
     .toPost{
         border: 1px solid rgba(128, 128, 128, 0.253);
     }
-    
 
     .toPost h1{
         color: white;
+    }
+
+    .toPost form button{
+        background-color: #1a1a1a;
+    }
+
+    .toPost form button:hover {
+        background-color: #cf3939;
+    }
+    .toPost form button:focus,
+    button:focus-visible {
+        outline: none;
     }
 }

@@ -1,11 +1,13 @@
 .users{
     grid-area: users;
     height: 85vh;
-    width: 90%;
+    width: 40vh;
     display: grid;
+    margin-right: 2vh;
 }
 
 .other{
+    width: 40vh;
     text-align: center;
     padding: 5vh 1vh;
     margin-top: 2vh;

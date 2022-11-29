@@ -17,7 +17,7 @@ const ToPost = ({id}) => {
     }
 
     const sendData = async evemt=>{
-        evemt.preventDefault()
+        // evemt.preventDefault()
         const url = "http://localhost:3000/posts";
         const response = await fetch(url, {
             method: 'POST',

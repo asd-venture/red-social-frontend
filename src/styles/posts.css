@@ -1,6 +1,6 @@
 .posts{
     grid-area: posts;
-    height: 71vh;
+    height: 70vh;
     padding: 3vh;
     overflow-y: scroll; 
 }
@@ -39,6 +39,11 @@
     justify-content: space-around;
 }
 
-.LikeComment p{
+.LikeComment button{
     cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    background-color: transparent !important;
+    border: none;
+    font-weight: bold;
 }

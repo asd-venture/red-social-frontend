@@ -1,12 +1,11 @@
 .profile{
-    padding: 1em;
     display: grid;
     grid-template-rows: auto;
     grid-template-areas: 
-    "nav nav nav"
-    "userProfile toPost toPost"
-    "userProfile userPosts userPosts"
-    "userProfile userPosts userPosts";
+    "nav nav nav nav nav"
+    "userProfile toPost toPost toPost toPost"
+    "userProfile userPosts userPosts userPosts userPosts"
+    "userProfile userPosts userPosts userPosts userPosts";
     column-gap: 3vh;
     row-gap: 2vh;
 }
@@ -14,6 +13,7 @@
 .profileUser{
     grid-area: userProfile;
     text-align: center;
+    margin-left: 2vh;
 }
 
 .profileUser img{

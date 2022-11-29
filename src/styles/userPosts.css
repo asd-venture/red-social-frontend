@@ -1,13 +1,14 @@
 .userPosts{
     grid-area: userPosts;
-    height: 46vh;
+    height: 48vh;
     overflow-y: scroll;
     overflow: overlay;
+    margin-right: 2vh;
 }
 
 .anotherUserPosts{
     grid-area: userPosts;
-    height: 70vh;   
+    height: 80vh;   
     overflow-y: scroll;
     overflow: overlay;
 }
@@ -24,5 +25,9 @@
     
     .userPosts{
         border: 1px solid rgba(128, 128, 128, 0.253);
+    }
+
+    .userPosts h1, .anotherUserPosts h1{
+        color: white;
     }
 }

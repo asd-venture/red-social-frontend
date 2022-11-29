@@ -6,7 +6,7 @@ const NewPost = () => {
 
   return (
     <div className='newPost'>
-        <Link to='/profile' className='linkNav' activeclassname='active'>
+        <Link to='/profile' className='linkNav'>
             <h1>Create New Post</h1>
         </Link>
     </div>

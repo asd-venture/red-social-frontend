@@ -2,8 +2,13 @@ nav{
     grid-area: nav;
     display: flex;
     justify-content: space-between;
-    padding: 3vh;
+    padding: 2vh 3vh;
     border-bottom: 1px solid rgba(128, 128, 128, 0.13);
+}
+
+.navProfile{
+    display: flex;
+    align-items: center;
 }
 
 nav p{
@@ -30,11 +35,12 @@ nav div{
     background-color: hsla(278, 51%, 76%, 0.186);
 }
 
-nav div img{
+.navProfile img{
     width: 5vh;
+    height: 5vh;
 }
 
-button {
+nav button {
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 2vh 3vh;
@@ -46,11 +52,11 @@ button {
     transition: border-color 0.25s;
 }
   
-button:hover {
+nav button:hover {
     background-color: #646cff;
 }
-button:focus,
-button:focus-visible {
+nav button:focus,
+nav button:focus-visible {
     outline: none;
 }
 
@@ -58,11 +64,16 @@ button:focus-visible {
     .active{
         background-color: #393939;
     }
-    button:hover {
+
+    nav button{
+        background-color: #1a1a1a;
+    }
+    
+    nav button:hover {
         background-color: #cf3939;
     }
-    button:focus,
-    button:focus-visible {
+    nav button:focus,
+    nav button:focus-visible {
         outline: none;
     }
 }

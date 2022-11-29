@@ -5,6 +5,7 @@ import perfilDefault from '../assets/perfilDefault.webp'
 const Posts = () => {
 
   const [posts, setPosts] = useState();
+  const [isActive, setIsActive] = useState(false);
 
   const url = "http://localhost:3000/posts";
 
@@ -21,6 +22,11 @@ const Posts = () => {
   useEffect(()=>{
       getApiData();
   }, [])
+
+
+  const handleClickLike = ()=>{
+    setIsActive(current => !current)
+  }
 
   return (
     <div className='posts'>
@@ -42,8 +48,12 @@ const Posts = () => {
 
               <p className='contentPost'>{lastPosts.content}</p>
               <div className='LikeComment'>
-                <p>Like</p> 
-                <p>Comment</p>
+                <button style={{
+                    color: isActive ? 'blue' : 'black'
+                  }} 
+                  onClick={handleClickLike}
+                >Like</button> 
+                <button>Comment</button>
               </div>
             </div>
 

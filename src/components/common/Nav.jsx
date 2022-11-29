@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import { useAuth0 } from '@auth0/auth0-react'
 import LogoutButton from './LogoutButton'
 import '../../styles/nav.css'
@@ -12,12 +12,14 @@ const Nav = () => {
     return (
         <nav>
             <div>
-                <img src={user.picture} onError={event=>{
-                        event.target.src = perfilDefault
-                        event.onerror = null
-                    }} 
-                />
-                <p> {user.name} </p>
+                <Link to="/profile" className='navProfile'>
+                    <img src={user.picture} onError={event=>{
+                            event.target.src = perfilDefault
+                            event.onerror = null
+                        }} 
+                    />
+                    <p> {user.name} </p>
+                </Link>
             </div>
 
             <div>
