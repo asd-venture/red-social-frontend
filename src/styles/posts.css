@@ -39,6 +39,14 @@
     justify-content: space-around;
 }
 
+.like{
+    color: gray;
+}
+
+.likeActive{
+    color: #646cff;
+}
+
 .LikeComment button{
     cursor: pointer;
     text-decoration: none;

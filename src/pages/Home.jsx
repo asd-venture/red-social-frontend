@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import Nav from './common/Nav'
-import Users from './Users'
-import NewPost from './NewPost'
-import Posts from './Posts'
-import Loading from './Loading'
+import Nav from '../components/common/Nav'
+import Users from '../components/Users'
+import NewPost from '../components/NewPost'
+import Posts from '../components/Posts'
+import Loading from '../components/Loading'
 import '../styles/home.css'
+
+const url = "http://localhost:3000/users";
 
 const Home = () => {
 
@@ -17,7 +19,6 @@ const Home = () => {
     email: user.email,
     picture: user.picture
   }
-  const url = "http://localhost:3000/users";
   const apiData = async ()=>{
     const response = await fetch(url, {
       method: 'POST',

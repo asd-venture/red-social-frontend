@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useParams } from "react-router-dom"
-import Nav from './common/Nav'
-import UserPosts from './UserPosts'
-import ToPost from './ToPost'
+import Nav from '../components/common/Nav'
+import UserPosts from '../components/UserPosts'
+import ToPost from '../components/ToPost'
 import '../styles/profile.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 

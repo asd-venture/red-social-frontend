@@ -2,12 +2,20 @@ import { useState, useEffect } from 'react'
 import '../styles/posts.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
+const url = "http://localhost:3000/posts";
+
 const Posts = () => {
 
   const [posts, setPosts] = useState();
   const [isActive, setIsActive] = useState(false);
+  
+  const active = (id) => {
+    const postid = 'postid';
+    return window[postid+id] = 'hola';
+  }
+  active("1");
+  console.log(postid1);
 
-  const url = "http://localhost:3000/posts";
 
   const getApiData = async () => {
       const response = await fetch(url)
@@ -22,7 +30,6 @@ const Posts = () => {
   useEffect(()=>{
       getApiData();
   }, [])
-
 
   const handleClickLike = ()=>{
     setIsActive(current => !current)
@@ -48,9 +55,7 @@ const Posts = () => {
 
               <p className='contentPost'>{lastPosts.content}</p>
               <div className='LikeComment'>
-                <button style={{
-                    color: isActive ? '#646cff' : 'gray'
-                  }} 
+                <button className={ isActive ? 'likeActive' : 'like'} 
                   onClick={handleClickLike}
                 >Like</button> 
                 <button>Comment</button>

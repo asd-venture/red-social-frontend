@@ -7,9 +7,9 @@ const UserPosts = ({id, another}) => {
 
   console.log(id);
 
-  const url = `http://localhost:3000/posts/user/${id}`;
-
+  
   const getApiData = async () => {
+      const url = `http://localhost:3000/posts/user/${id}`;
       const response = await fetch(url)
       .then(response=> response.json())
       .catch(e => {
