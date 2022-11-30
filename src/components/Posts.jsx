@@ -49,7 +49,7 @@ const Posts = () => {
               <p className='contentPost'>{lastPosts.content}</p>
               <div className='LikeComment'>
                 <button style={{
-                    color: isActive ? 'blue' : 'black'
+                    color: isActive ? '#646cff' : 'gray'
                   }} 
                   onClick={handleClickLike}
                 >Like</button> 
