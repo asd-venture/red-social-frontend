@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import '../styles/toPost.css'
 
+const url = "http://localhost:3000/posts";
 const ToPost = ({id}) => {
 
     const [datos, setDatos] = useState({
         content: '',
-        userid: id
+        useridpost: id
     })
-    const [postUser, setPostUser] = useState();
 
     const handleSubmit = event=>{
         setDatos({
@@ -17,8 +17,6 @@ const ToPost = ({id}) => {
     }
 
     const sendData = async evemt=>{
-        // evemt.preventDefault()
-        const url = "http://localhost:3000/posts";
         const response = await fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -32,8 +30,6 @@ const ToPost = ({id}) => {
         .catch(e => {
         console.log('e', e);
         })
-
-        setPostUser(response);
 
         evemt.target.reset()
     }

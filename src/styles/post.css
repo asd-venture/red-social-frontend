@@ -1,0 +1,63 @@
+.postBox{
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(217, 217, 217, 0.448);
+}
+
+.userPost{
+    display: flex;
+}
+
+.userPost img, .userPost div{
+    padding: 2vh;
+}
+
+.userPost img{
+    width: 10vh;
+    height: 10vh;
+}
+
+.nameEmail{
+    display: grid;
+    padding: 0em 1em;
+}
+
+.contentPost{
+    padding: 2rem 8rem;
+    margin: 3vh 0;
+    border: 1px solid rgba(128, 128, 128, 0.253);
+}
+
+.LikeComment{
+    padding: 1vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.like{
+    color: black;
+}
+
+.likeActive{
+    color: rgb(20, 84, 157);
+}
+
+.LikeComment button{
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    background-color: transparent !important;
+    border: none;
+    font-weight: bold;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .like{
+        color: white;
+    }
+    
+    .likeActive{
+        color: #f14040;
+    }
+
+}

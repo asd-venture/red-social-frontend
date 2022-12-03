@@ -36,7 +36,7 @@ const Users = () => {
                     users.map(usersProfile=>( 
                         user.email == usersProfile.email ? '' 
                             :
-                        <Link to={'/profile/'+usersProfile.id} key={usersProfile.email} className='otherUsers'>
+                        <Link to={'/profile/'+usersProfile.userid} key={usersProfile.email} className='otherUsers'>
                             <img src={usersProfile.picture} className='usersPerfilPicture' onError={event=>{
                                 event.target.src = perfilDefault
                                 event.onerror = null

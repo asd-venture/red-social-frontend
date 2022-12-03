@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink, Link } from "react-router-dom"
 import { useAuth0 } from '@auth0/auth0-react'
 import LogoutButton from './LogoutButton'
-import '../../styles/nav.css'
-import perfilDefault from '../../assets/perfilDefault.webp'
+import '../styles/nav.css'
+import perfilDefault from '../assets/perfilDefault.webp'
 
 const Nav = () => {
 

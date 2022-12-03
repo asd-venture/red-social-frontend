@@ -68,6 +68,9 @@ body {
   a:hover {
     color: #f14040;
   }
+  a p:hover{
+    color: #f14040;
+  }
   button {
     background-color: #1a1a1a;
   }

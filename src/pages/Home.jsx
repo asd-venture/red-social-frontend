@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import Nav from '../components/common/Nav'
+import Nav from '../components/Nav'
 import Users from '../components/Users'
 import NewPost from '../components/NewPost'
 import Posts from '../components/Posts'

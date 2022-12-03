@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react'
+import Post from './Post'
 import '../styles/userPosts.css'
 
 const UserPosts = ({id, another}) => {
 
   const [posts, setPosts] = useState();
 
-  console.log(id);
-
-  
   const getApiData = async () => {
       const url = `http://localhost:3000/posts/user/${id}`;
       const response = await fetch(url)
@@ -30,27 +28,7 @@ const UserPosts = ({id, another}) => {
       {posts &&
         posts.message != 'The user does not have any post'?
           posts.map(lastPosts=>(
-            
-            <div key={lastPosts.id} className='postBox'>
-                  <div className='userPost'>
-                    <img src={lastPosts.picture} onError={event=>{
-                              event.target.src = perfilDefault
-                              event.onerror = null
-                          }}/>
-
-                    <div className='nameEmail'>
-                      <p>{lastPosts.username}</p>
-                      <p>{lastPosts.email}</p>
-                    </div>
-                  </div>
-
-                <p className='contentPost'>{lastPosts.content}</p>
-                <div className='LikeComment'>
-                  <p>Like</p> 
-                  <p>Comment</p>
-                </div>
-              </div>
-
+            <Post postdata={lastPosts} />
             ))
           :
           <h1> The user does not have any post</h1>
