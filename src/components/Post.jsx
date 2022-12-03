@@ -1,22 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from "react-router-dom"
 import '../styles/post.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
-const url = "http://localhost:3000/likes";
 
-const Post = ({postdata}) => {
-
+const Post = ({postdata, userdata}) => {
+    
     const { user } = useAuth0();
     const [isActive, setIsActive] = useState(false);
-
-    const [datos, setDatos] = useState({
-        useridlike: '',
-        postidlike: postdata.postid,
-    })
-
-    const apiData = async ()=>{
+    const [likeId, setLikeId] = useState();
+    const [ likeUser, setLikeUser] = useState();
+    const [likeCounter, setLikeCounter] = useState();
+    
+    const addData = async()=>{
+        const url = "http://localhost:3000/likes";
         const response = await fetch(url, {
           method: 'POST',
           mode: 'cors',
@@ -24,31 +22,73 @@ const Post = ({postdata}) => {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
           },
-          body: JSON.stringify(data)
+          body: JSON.stringify({
+            useridlike: userdata.userid,
+            postidlike: postdata.postid,
+        })
         })
         .then(response => response.json())
         .catch(e => {
           console.log('e', e);
         })
-    
-        setId(response);
+
+        setLikeId(response)
     }
 
     const deleteData = async()=>{
-
-        
+        const id = likeId.like.likeid
+        const url = `http://localhost:3000/likes/${id}`;
+        const response = await fetch(url, {
+            method: 'DELETE', 
+            mode: 'cors'
+            })
+            .then(response => response.json())
+            .catch(e => {
+                console.log('e', e);
+            })
     }
     
-    const handleClickLike = ()=>{
+    const handleClickLike = ()=>{        
         setIsActive(current => !current)
-
-        // isActive ? 
-        //     apiData()
-        //     :
+        isActive ? deleteData(): addData();
     }
 
+    const getUserLikes = async()=>{
+        const id = userdata.userid
+        const url = `http://localhost:3000/likes/user/${id}`;
+        const response = await fetch(url)
+        .then(response=> response.json())
+        .catch(e => {
+            console.log('e', e)
+        })
+
+        response.map((userlikes)=>(
+            userlikes.postidlike==postdata.postid?
+                setIsActive(true)
+                :
+                null
+        ))
+    }
+
+    const getPostLikes = async ()=>{
+        const id = postdata.postid
+        const url = `http://localhost:3000/likes/post/${id}`;
+        const response = await fetch(url)
+        .then(response=> response.json())
+        .catch(e => {
+            console.log('e', e)
+        })
+
+        setLikeCounter(response)
+    }
+
+    useEffect(()=>{
+        getUserLikes();
+        getPostLikes();
+    }, []);
+
     return (
-        <div key={postdata.id} className='postBox'>
+        <div className='postBox'>
             {postdata.email == user.email ? 
                 <Link to='/profile' className='userPost'>
                     <img src={postdata.picture} onError={event=>{
@@ -79,7 +119,7 @@ const Post = ({postdata}) => {
             <div className='LikeComment'>
                 <button className={ isActive ? 'likeActive' : 'like'} 
                     onClick={handleClickLike}
-                >Like</button> 
+                >Like { likeCounter && <pre> {Object.keys(likeCounter).length} </pre> } </button> 
                 <button>Comment</button>
             </div>
         </div>

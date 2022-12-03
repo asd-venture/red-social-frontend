@@ -28,24 +28,27 @@
 }
 
 .LikeComment{
-    padding: 1vh;
     display: flex;
     justify-content: space-around;
 }
 
 .like{
     color: black;
+    display: flex;
+    padding: 1vh 5vh;
 }
 
 .likeActive{
     color: rgb(20, 84, 157);
+    display: flex;
+    padding: 1vh 5vh;
 }
 
 .LikeComment button{
     cursor: pointer;
     text-decoration: none;
     outline: none;
-    background-color: transparent !important;
+    background-color: transparent;
     border: none;
     font-weight: bold;
 }
@@ -55,9 +58,17 @@
     .like{
         color: white;
     }
+
+    .like:hover{
+        background: #393939;
+    }
     
     .likeActive{
         color: #f14040;
+    }
+
+    .likeActive:hover{
+        background: #393939;
     }
 
 }

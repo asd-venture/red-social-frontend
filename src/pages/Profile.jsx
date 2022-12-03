@@ -38,16 +38,16 @@ const Profile = () => {
                     <Nav/>
                     { users.map(anotherUser=>(
                         id == anotherUser.userid ?
-                        <div className="profileUser">
-                            <img src={anotherUser.picture} onError={event=>{
-                                event.target.src = perfilDefault
-                                event.onerror = null
-                            }} />
-                            <h2> {anotherUser.username} </h2>
-                            <p> {anotherUser.email} </p>
-                        </div>
-                        :
-                        null
+                            <div className="profileUser">
+                                <img src={anotherUser.picture} onError={event=>{
+                                    event.target.src = perfilDefault
+                                    event.onerror = null
+                                }} />
+                                <h2> {anotherUser.username} </h2>
+                                <p> {anotherUser.email} </p>
+                            </div>
+                            :
+                            null
                     ))
                     }
                     <UserPosts id={id} another={true}/>
