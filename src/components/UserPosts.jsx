@@ -39,7 +39,6 @@ const UserPosts = ({id, another}) => {
       getApiData();
       getUserId();
   }, [])
-
           
   return (
     <div className={another?'anotherUserPosts':'userPosts'}>

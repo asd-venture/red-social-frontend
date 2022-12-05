@@ -38,7 +38,7 @@ const Profile = () => {
                     <Nav/>
                     { users.map(anotherUser=>(
                         id == anotherUser.userid ?
-                            <div className="profileUser">
+                            <div key={anotherUser.userid} className="profileUser">
                                 <img src={anotherUser.picture} onError={event=>{
                                     event.target.src = perfilDefault
                                     event.onerror = null
@@ -50,7 +50,9 @@ const Profile = () => {
                             null
                     ))
                     }
-                    <UserPosts id={id} another={true}/>
+                    <div key={users.map((anotherUser)=>(anotherUser.userid))} className="postsUser">
+                        <UserPosts id={id} another={true}/>
+                    </div>
                 </div>
                 :
                 <div className="profile">
@@ -66,15 +68,14 @@ const Profile = () => {
                     </div>
                     
                     {
-                        users.map(anotherUser=>(
-                            user.email == anotherUser.email?
-                                <>
-                                    <ToPost id={anotherUser.userid}/>
-                                    <UserPosts id={anotherUser.userid} another={false}/> 
-                                </>
-                                :
-                                    null
-
+                    users.map(anotherUser=>(
+                        user.email == anotherUser.email?
+                            <div key={anotherUser.userid} className="postsUser">
+                                <ToPost id={anotherUser.userid}/>
+                                <UserPosts id={anotherUser.userid} another={false}/> 
+                            </div>
+                            :
+                                null
                         ))
                     } 
                 </div>

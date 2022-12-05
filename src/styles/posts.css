@@ -1,6 +1,6 @@
 .posts{
     grid-area: posts;
-    height: 70vh;
+    height: 71vh;
     padding: 3vh;
     overflow-y: scroll; 
 }

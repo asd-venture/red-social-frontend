@@ -1,8 +1,7 @@
 .toPost{
-    grid-area: toPost;
-    height: 100%;
     padding: 2vh;
     margin-right: 2vh;
+    margin-bottom: 3vh;
 }
 
 .toPost h1{
@@ -19,8 +18,9 @@
 .toPost form input{
     width: 100%;
     font-size: 2vh;
-    padding: 1.5vh 0;
+    padding: 1.5vh;
     margin: 1vh;
+    border-radius: 1vh;
 }
 
 .toPost form button {

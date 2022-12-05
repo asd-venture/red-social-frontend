@@ -21,6 +21,16 @@
     padding: 0em 1em;
 }
 
+.name{
+    font-size: 2vh;
+    font-weight: bolder;
+}
+
+.email{
+    color: rgba(0, 0, 0, 0.43);
+    font-size: 1.4vh;
+}
+
 .contentPost{
     padding: 2rem 8rem;
     margin: 3vh 0;
@@ -38,10 +48,18 @@
     padding: 1vh 5vh;
 }
 
+.like:hover{
+    background: rgb(215, 215, 215);
+}
+
 .likeActive{
     color: rgb(20, 84, 157);
     display: flex;
     padding: 1vh 5vh;
+}
+
+.likeActive:hover{
+    background: rgb(215, 215, 215);
 }
 
 .LikeComment button{
@@ -54,6 +72,10 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
+    .email{
+        color: rgba(255, 255, 255, 0.453);
+    }
 
     .like{
         color: white;

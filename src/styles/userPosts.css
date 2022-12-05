@@ -1,6 +1,6 @@
 .userPosts{
     grid-area: userPosts;
-    height: 48vh;
+    height: 50vh;
     overflow-y: scroll;
     overflow: overlay;
     margin-right: 2vh;
@@ -8,7 +8,7 @@
 
 .anotherUserPosts{
     grid-area: userPosts;
-    height: 80vh;   
+    height: 84vh;   
     overflow-y: scroll;
     overflow: overlay;
 }

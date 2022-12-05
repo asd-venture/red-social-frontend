@@ -3,9 +3,8 @@
     grid-template-rows: auto;
     grid-template-areas: 
     "nav nav nav nav nav"
-    "userProfile toPost toPost toPost toPost"
-    "userProfile userPosts userPosts userPosts userPosts"
-    "userProfile userPosts userPosts userPosts userPosts";
+    "userProfile postsUser postsUser postsUser postsUser"
+    "userProfile postsUser postsUser postsUser postsUser";
     column-gap: 3vh;
     row-gap: 2vh;
 }
@@ -27,6 +26,10 @@
 
 .profileUser p{
     margin: 3vh;
+}
+
+.postsUser{
+    grid-area: postsUser;
 }
 
 @media (prefers-color-scheme: dark) {

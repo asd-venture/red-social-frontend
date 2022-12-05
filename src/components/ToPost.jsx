@@ -16,7 +16,7 @@ const ToPost = ({id}) => {
         })
     }
 
-    const sendData = async evemt=>{
+    const sendData = async event=>{
         const response = await fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -31,7 +31,7 @@ const ToPost = ({id}) => {
         console.log('e', e);
         })
 
-        evemt.target.reset()
+        event.target.reset()
     }
 
     return (

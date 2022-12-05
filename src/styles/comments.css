@@ -1,0 +1,98 @@
+.comments{
+    padding: 2vh;
+    border: 1px solid rgba(128, 128, 128, 0.253);
+    transition: all 5s ease-out;
+}
+
+.comments form{
+    display: flex;
+    align-items: center;
+}
+
+.comments form input{
+    width: 100%;
+    font-size: 1.3vh;
+    padding: 1.2vh;
+    margin: 0.5vh;
+    border-radius: 1vh;
+}
+
+.comments form button {
+    height: 4vh;
+    justify-self: right;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.5vh 1vh;
+    font-weight: 500;
+    font-size: 1em;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+  
+.comments form button:hover {
+    background-color: #646cff;
+}
+.comments form button:focus,
+.comments form button:focus-visible {
+    outline: none;
+}
+
+.comments h4{
+    padding: 1vh;
+}
+
+.boxComments{
+    padding: 0.6vh;
+    border-radius: 0;
+}
+
+.comment{
+    margin-top: 0.5vh;
+    display: grid;
+    grid-template-columns: 7% auto;
+    border-radius: 2vh;
+}
+
+.comment div{
+    border-radius: 2vh;
+}
+
+.comment img{
+    margin: 1vh;
+}
+
+.comment h5{
+    padding: 0.5vh;
+    font-size: 1.6vh;
+}
+
+.comment p{
+    padding: 0.5vh;
+    font-size: 1.4vh;
+    border: 1px solid rgba(128, 128, 128, 0.055);
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .comments h4{
+        color: white;
+    }
+
+    .comments form button{
+        background-color: #1a1a1a;
+    }
+    
+    .comments form button:hover {
+        background-color: #cf3939;
+    }
+    .comments form button:focus,
+    .comments form button:focus-visible {
+        outline: none;
+    }
+
+    .comment h5{
+        color: white;
+    }
+}
