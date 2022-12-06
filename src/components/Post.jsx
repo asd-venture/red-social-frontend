@@ -121,7 +121,7 @@ const Post = ({postdata, userdata}) => {
                     }}/>
 
                 <div className='nameEmail'>
-                    <p className='name'>{postdata.username}</p>
+                    <p className='name' >{postdata.username}</p>
                     <p className='email'>{postdata.email}</p>
                 </div>
             </Link>

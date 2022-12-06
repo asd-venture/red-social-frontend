@@ -6,7 +6,7 @@
     "userProfile postsUser postsUser postsUser postsUser"
     "userProfile postsUser postsUser postsUser postsUser";
     column-gap: 3vh;
-    row-gap: 2vh;
+    border-radius: 0;
 }
 
 .profileUser{
@@ -16,7 +16,7 @@
 }
 
 .profileUser img{
-    width: 20vh;
+    width: 40vh;
     margin: 5vh;
 }
 

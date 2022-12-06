@@ -1,0 +1,91 @@
+.index{
+    padding: 8vh;
+    display: flex;
+    justify-content: center;
+    border-radius: 0;
+}
+
+.image{
+    border: 1px solid rgba(128, 128, 128, 0.322);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.onlyImage{
+    height: 84vh;
+    width: 50vh;
+    padding: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.image h1{
+    margin-top: 10vh;
+}
+
+.image img{
+    width: 80%;
+}
+
+.onlyImage img{
+    height: 50%;
+}
+
+.aceptTerms{
+    width: 100%;
+    padding: 5vh;
+    border: 1px solid rgba(128, 128, 128, 0.164);
+    border-radius: 0;
+    transition: width 1s ease-in;
+}
+
+.image button, .onlyImage button{
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 2vh 3vh;
+    margin: 2vh;
+    font-weight: 500;
+    font-size: 1em;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+  
+.image button:hover, .onlyImage button:hover{
+    background-color: #646cff;
+}
+.image button:focus, .onlyImage button:focus,
+.image button:focus-visible, .onlyImage button:focus-visible {
+    outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .onlyImage{
+        border: 1px solid rgba(128, 128, 128, 0.322);
+    }
+    
+    .image h1{
+        color: white;
+    }
+    
+    .onlyImage h1{
+        color: white;
+    }
+
+    .image button, .onlyImage button{
+        background-color: #1a1a1a;
+    }
+    
+    .image button:hover, .onlyImage button:hover{
+        background-color: #cf3939;
+    }
+    .image button:focus, .onlyImage button:focus,
+    .image button:focus-visible, .onlyImage button:focus-visible{
+        outline: none;
+    }
+}

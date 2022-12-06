@@ -1,0 +1,81 @@
+.terms{
+    padding: 4vh;
+    transition: all ease-in 3s;
+}
+
+.terms h1{
+    padding: 3vh;
+}
+
+.terms p h3{
+    padding: 3vh;
+}
+
+.terms p ul{
+    padding: 2vh;
+    margin-left: 3vh;
+}
+
+.terms div{
+    padding: 3vh;
+    display: flex;
+    align-items: center;
+}
+
+.boxAccept{
+    width: 3vh;
+    height: 3vh;
+    margin: 1vh;
+}
+
+.boxAccept:focus,
+.boxAccept:focus-visible{
+    outline: none;
+}
+
+.terms button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 2vh 3vh;
+    margin: 2vh;
+    font-weight: 500;
+    font-size: 1em;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+  
+.terms button:hover {
+    background-color: #646cff;
+}
+.terms button:focus,
+.terms button:focus-visible {
+    outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .terms{
+        border: 1px solid rgba(128, 128, 128, 0.562);
+    }
+
+    .terms h1{
+        color: white;
+    }
+
+    .terms div label{
+        color: white;
+    }
+
+    .terms button{
+        background-color: #1a1a1a;
+    }
+    
+    .terms button:hover {
+        background-color: #cf3939;
+    }
+    .terms button:focus,
+    .terms button:focus-visible {
+        outline: none;
+    }
+}

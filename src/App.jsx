@@ -1,32 +1,19 @@
-import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import './App.css'
+import Index from './pages'
 import Home from './pages/Home'
 import Loading from './components/Loading'
 import Profile from './pages/Profile'
+import Error404 from './components/Error404'
+import './App.css'
 
 function App() {
 
-  const [users, setUsers] = useState(null);
-
-  const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
-
-
-  const url = "http://localhost:3000/users";
-  useEffect(()=>{
-    fetch(url)
-    .then(response=> response.json())
-    .then(json => {
-      setUsers(json)
-    })
-    .catch(e => {
-      console.log('e', e)
-    })
-  }, [])
+  const { isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) return <Loading/>
   
+  console.log(isAuthenticated)
   return (
     <Router>
       { 
@@ -39,7 +26,8 @@ function App() {
           </Routes>
               :
           <Routes>
-            <Route path='/' element={loginWithRedirect()}/>
+            <Route path='/' element={<Index/>}/>
+            <Route path='*' element={<Error404/>}/>
           </Routes>
       }
     </Router>
