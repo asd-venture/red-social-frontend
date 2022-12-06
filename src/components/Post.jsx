@@ -113,32 +113,18 @@ const Post = ({postdata, userdata}) => {
     }, [reducerValue]);
 
     return (
-        <div className='postBox'>
-            {postdata.email == user.email ? 
-                <Link to='/profile' className='userPost'>
-                    <img src={postdata.picture} onError={event=>{
-                            event.target.src = perfilDefault
-                            event.onerror = null
-                        }}/>
+        <div className='postBox'>         
+            <Link to={postdata.email == user.email ? '/profile' : '/profile/'+postdata.userid} className='userPost'>
+                <img src={postdata.picture} onError={event=>{
+                        event.target.src = perfilDefault
+                        event.onerror = null
+                    }}/>
 
-                    <div className='nameEmail'>
-                        <p className='name'>{postdata.username}</p>
-                        <p className='email'>{postdata.email}</p>
-                    </div>
-                </Link>
-                            :
-                <Link to={'/profile/'+postdata.userid} className='userPost'>
-                    <img src={postdata.picture} onError={event=>{
-                            event.target.src = perfilDefault
-                            event.onerror = null
-                        }}/>
-
-                    <div className='nameEmail'>
-                        <p className='name'>{postdata.username}</p>
-                        <p className='email'>{postdata.email}</p>
-                    </div>
-                </Link>
-            }
+                <div className='nameEmail'>
+                    <p className='name'>{postdata.username}</p>
+                    <p className='email'>{postdata.email}</p>
+                </div>
+            </Link>
 
             <p className='contentPost'>{postdata.content}</p>
             <div className='LikeComment'>

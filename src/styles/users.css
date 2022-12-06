@@ -55,3 +55,9 @@
         background-color: #393939;
     }
 }
+
+@media screen and (max-width:800px){
+    .users{
+        display: none;
+    }
+}

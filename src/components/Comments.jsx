@@ -1,9 +1,13 @@
 import { useState, useEffect, useReducer } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
+import { Link } from 'react-router-dom'
+
 import '../styles/comments.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
 const Comments = ({postdata, userdata}) => {
 
+  const { user } = useAuth0();
   const [comments, setComments] = useState();
   const [reducerValue, forceUpdate] = useReducer( x => x + 1 , 0)
 
@@ -70,7 +74,7 @@ const Comments = ({postdata, userdata}) => {
         comments &&
           comments.message != 'The post does not exist or that post does not have any comment'?
             comments.map(lastComments=>(
-                <div key={lastComments.commentid} className='comment'> 
+                <Link to={lastComments.email == user.email ? '/profile' : '/profile/'+lastComments.userid} key={lastComments.commentid} className='comment'> 
                   <img src={lastComments.picture} className='usersPerfilPicture' onError={event=>{
                                 event.target.src = perfilDefault
                                 event.onerror = null
@@ -80,7 +84,7 @@ const Comments = ({postdata, userdata}) => {
                     <p> {lastComments.nota} </p>
                   </div>
                     
-                </div>
+                </Link>
             ))
             :
             null

@@ -7,3 +7,12 @@
     "posts posts posts posts posts posts users";
     column-gap: 3vh;
 }
+
+@media screen and (max-width:800px){
+    .home{
+        grid-template-areas: 
+        "nav"
+        "newPost"
+        "posts";
+    }
+}

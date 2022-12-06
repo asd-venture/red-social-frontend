@@ -4,6 +4,7 @@ nav{
     justify-content: space-between;
     padding: 2vh 3vh;
     border-bottom: 1px solid rgba(128, 128, 128, 0.13);
+    flex-wrap: wrap;
 }
 
 .navProfile{
@@ -22,7 +23,8 @@ nav div{
 }
 
 .linkNav{
-    padding: 1em;
+    text-align: center;
+    padding: 3vh;
     width: 100%;
     height: 50%;
     display: flex;
@@ -82,4 +84,34 @@ nav button:focus-visible {
     nav button:focus-visible {
         outline: none;
     }
+}
+
+@media screen and (max-width:800px){
+
+    nav div{
+        justify-content: center;
+    }
+
+    nav div:nth-child(1){
+        order: 1;
+    }
+
+    nav div:nth-child(2){
+        order: 3;
+        width: 100%;
+    }
+    
+    nav div:nth-child(3){
+        order: 2;
+    }
+    
+    nav p{
+        padding: 1vh;
+    }
+
+    .navProfile img{
+        width: 4vh;
+        height: 4vh;
+    }
+    
 }

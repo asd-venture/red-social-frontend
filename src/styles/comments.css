@@ -48,6 +48,10 @@
     border-radius: 0;
 }
 
+.boxComments a:hover{
+    color: black;
+}
+
 .comment{
     margin-top: 0.5vh;
     display: grid;
@@ -56,6 +60,7 @@
 }
 
 .comment div{
+    padding: 1vh;
     border-radius: 2vh;
 }
 
@@ -76,6 +81,14 @@
 
 @media (prefers-color-scheme: dark) {
 
+    .boxComments a:hover{
+        color: white;
+    }
+
+    .boxComments p:hover{
+        color: white;
+    }
+    
     .comments h4{
         color: white;
     }
@@ -91,8 +104,10 @@
     .comments form button:focus-visible {
         outline: none;
     }
+    
+}
 
-    .comment h5{
-        color: white;
-    }
+@media screen and (max-width:800px){
+
+    
 }
