@@ -7,6 +7,11 @@
     display: flex;
 }
 
+.perfilEdit{
+    display: flex;
+    justify-content: space-between;
+}
+
 .userPost img, .userPost div{
     padding: 2vh;
 }
@@ -29,6 +34,26 @@
 .email{
     color: rgba(0, 0, 0, 0.43);
     font-size: 1.4vh;
+}
+
+.delete{
+    font-size: 4vh;
+    margin: 2.5vh;
+    cursor: pointer;
+}
+
+.deleteBotton{
+    background-color: rgba(185, 185, 185, 0.575);
+    font-size: 2vh;
+    padding: 0.5vh;
+    color: black;
+    float: left;
+    margin-top: 1.5vh;
+    border-radius: 1vh;
+}
+
+.deleteBotton:hover{
+    background-color: rgb(185, 185, 185);
 }
 
 .contentPost{

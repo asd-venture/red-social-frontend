@@ -44,16 +44,13 @@ const Home = () => {
   if (id == undefined) return <Loading/>
   
   return (
-    <div>
-      {id &&
+    id &&
         <div className='home'>
           <Nav/>
           <NewPost />
           <Posts/>
           <Users/>
         </div>
-      }
-    </div>
   )
 }
 

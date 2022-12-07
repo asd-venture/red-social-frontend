@@ -13,7 +13,6 @@ function App() {
 
   if (isLoading) return <Loading/>
   
-  console.log(isAuthenticated)
   return (
     <Router>
       { 

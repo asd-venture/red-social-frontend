@@ -10,14 +10,14 @@ const UserPosts = ({id, another}) => {
   const [userdata, setUserdata] = useState();
 
   const getApiData = async () => {
-      const url = `http://localhost:3000/posts/user/${id}`;
-      const response = await fetch(url)
-      .then(response=> response.json())
-      .catch(e => {
-          console.log('e', e)
-      })
+    const url = `http://localhost:3000/posts/user/${id}`;
+    const response = await fetch(url)
+    .then(response=> response.json())
+    .catch(e => {
+        console.log('e', e)
+    })
 
-      setPosts(response);
+    setPosts(response);
   }
 
   const getUserId = async () => {
@@ -46,7 +46,7 @@ const UserPosts = ({id, another}) => {
       {posts &&
         posts.message != 'The user does not have any post'?
           posts.map(lastPosts=>(
-            <Post key={lastPosts.postid} postdata={lastPosts} userdata={userdata} />
+            <Post key={lastPosts.postid} postdata={lastPosts} userdata={userdata} confDelete={another?false:true}/>
             ))
           :
           <h1> The user does not have any post</h1>

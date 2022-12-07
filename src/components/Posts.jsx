@@ -46,7 +46,9 @@ const Posts = () => {
       { posts &&
           userdata &&
             posts.map(lastPosts=>(
-              <Post key={lastPosts.postid} postdata={lastPosts} userdata={userdata} />
+              <div  key={lastPosts.postid}>
+                <Post postdata={lastPosts} userdata={userdata} confDelete={false}/>
+              </div>
             ))
       }
     </div>
