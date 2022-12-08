@@ -1,6 +1,5 @@
-import React from 'react'
 
-const getApi = async () => {
+export default getApi = async () => {
 
     const url = `http://localhost:3000/users`;
   
@@ -12,5 +11,3 @@ const getApi = async () => {
     
     return response
 }
-
-export default getApi

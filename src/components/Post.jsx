@@ -6,12 +6,11 @@ import '../styles/post.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
 
-const Post = ({postdata, userdata, confDelete}) => {
+const Post = ({postdata, userdata}) => {
     
     const { user } = useAuth0();
     const [isLikeActive, setIsLikeActive] = useState(false);
     const [isCommentActive, setIsCommentActive] = useState(false);
-    const [isDeleteActive, setIsDeleteActive] = useState(false);
     const [like, setLike] = useState();
     const [likeCounter, setLikeCounter] = useState();
     const [reducerValue, forceUpdate] = useReducer( x => x + 1 , 0)
@@ -20,20 +19,16 @@ const Post = ({postdata, userdata, confDelete}) => {
     const addData = async()=>{
         const url = "http://localhost:3000/likes";
         const response = await fetch(url, {
-          method: 'POST',
-          mode: 'cors',
-          headers:{
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-          },
-          body: JSON.stringify({
-            useridlike: userdata.userid,
-            postidlike: postdata.postid,
-        })
-        })
-        .then(response => response.json())
-        .catch(e => {
-          console.log('e', e);
+            method: 'POST',
+            mode: 'cors',
+            headers:{
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify({
+                useridlike: userdata.userid,
+                postidlike: postdata.postid,
+            })
         })
 
         forceUpdate()
@@ -42,29 +37,21 @@ const Post = ({postdata, userdata, confDelete}) => {
     const getLikeId = async()=>{
         const url = 'http://localhost:3000/likes';
         const response = await fetch(url)
-        .then(response => response.json())
-        .then(response=> response.map((likes)=>(
-            userdata.userid==likes.useridlike && postdata.postid==likes.postidlike?
-            setLike(likes)
-                :
-            null
-        )))
-        .catch(e => {
-            console.log('e', e);
+        const data = await response.json()
+        
+        data.foreach((likes)=>{
+            if(userdata.userid==likes.useridlike && postdata.postid==likes.postidlike){
+                setLike(likes)
+            }
         })
     }
 
     const deleteLike = async()=>{
-
         const id = like.likeid
         const url = `http://localhost:3000/likes/${id}`;
         const response = await fetch(url, {
         method: 'DELETE', 
         mode: 'cors'
-        })
-        .then(response => response.json())
-        .catch(e => {
-            console.log('e', e);
         })
         
         forceUpdate()
@@ -79,23 +66,16 @@ const Post = ({postdata, userdata, confDelete}) => {
         setIsCommentActive(current => !current)
     }
 
-    const handleClickDeletePost = ()=>{
-        setIsDeleteActive(current => !current)
-    }
-
     const getUserLikes = async()=>{
         const id = userdata.userid
         const url = `http://localhost:3000/likes/user/${id}`;
         const response = await fetch(url)
-        .then(response=> response.json())
-        .then(response=> response.map((userlikes)=>(
-            userlikes.postidlike==postdata.postid?
+        const data = await response.json()
+
+        data.foreach(userLikes=>{
+            if (userLikes.postidlike==postdata.postid) {
                 setIsLikeActive(true)
-                :
-                null
-        )))
-        .catch(e => {
-            console.log('e', e)
+            }
         })
     }
 
@@ -103,26 +83,9 @@ const Post = ({postdata, userdata, confDelete}) => {
         const id = postdata.postid
         const url = `http://localhost:3000/likes/post/${id}`;
         const response = await fetch(url)
-        .then(response=> response.json())
-        .catch(e => {
-            console.log('e', e)
-        })
+        const data = await response.json()
 
-        setLikeCounter(response.posts)
-    }
-
-    const deletePost = async()=>{
-
-        const id = postdata.postid
-        const url = `http://localhost:3000/posts/${id}`;
-        const response = await fetch(url, {
-        method: 'DELETE', 
-        mode: 'cors'
-        })
-        .then(response => response.json())
-        .catch(e => {
-            console.log('e', e);
-        })
+        setLikeCounter(data.posts)
     }
 
     useEffect(()=>{
@@ -133,30 +96,17 @@ const Post = ({postdata, userdata, confDelete}) => {
 
     return (
         <div className='postBox'>  
-            <div className='perfilEdit'>
-                <Link to={postdata.email == user.email ? '/profile' : '/profile/'+postdata.userid} className='userPost'>
-                    <img src={postdata.picture} onError={event=>{
-                            event.target.src = perfilDefault
-                            event.onerror = null
-                        }}/>
+            <Link to={postdata.email == user.email ? '/profile' : '/profile/'+postdata.userid} className='userPost'>
+                <img src={postdata.picture} onError={event=>{
+                        event.target.src = perfilDefault
+                        event.onerror = null
+                    }}/>
 
-                    <div className='nameEmail'>
-                        <p className='name' >{postdata.username}</p>
-                        <p className='email'>{postdata.email}</p>
-                    </div>
-                </Link>
-                { confDelete ? 
-                    <p className='delete' onClick={handleClickDeletePost}> ... 
-                        {isDeleteActive ?
-                            <p className='deleteBotton' onClick={deletePost}> delete </p>
-                            :
-                            null
-                        }
-                    </p> 
-                    : 
-                    null 
-                }
-            </div>       
+                <div className='nameEmail'>
+                    <p className='name' >{postdata.username}</p>
+                    <p className='email'>{postdata.email}</p>
+                </div>
+            </Link>
             <p className='contentPost'>{postdata.content}</p>
             <div className='LikeComment'>
                 <button className={ isLikeActive ? 'likeActive' : 'like'} 

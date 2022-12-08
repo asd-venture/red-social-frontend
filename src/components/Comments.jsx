@@ -15,18 +15,16 @@ const Comments = ({postdata, userdata}) => {
     const id = postdata.postid
     const url = `http://localhost:3000/comments/post/${id}`;
     const response = await fetch(url)
-    .then(response=> response.json())
-    .catch(e => {
-      console.log('e', e)
-    })
+    const data = await response.json()
     
-    setComments(response);
+    setComments(data);
   }
   
   useEffect(()=>{
     getApiData();
   }, [reducerValue])
 
+  
   const [datos, setDatos] = useState({
     nota: '',
     useridcomment: userdata.userid,
@@ -52,10 +50,6 @@ const Comments = ({postdata, userdata}) => {
             'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(datos)
-    })
-    .then(response => response.json())
-    .catch(e => {
-    console.log('e', e);
     })
 
     event.target.reset()

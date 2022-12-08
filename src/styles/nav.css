@@ -85,29 +85,17 @@ nav button:focus-visible {
     }
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:650px){
 
     nav div{
         justify-content: center;
     }
 
-    nav div:nth-child(1){
-        order: 1;
-    }
-
-    nav div:nth-child(2){
-        order: 3;
-        width: 100%;
-    }
     
     nav div:nth-child(3){
-        order: 2;
+        margin: 1vh 0;
     }
     
-    nav p{
-        padding: 1vh;
-    }
-
     .navProfile img{
         width: 4vh;
         height: 4vh;

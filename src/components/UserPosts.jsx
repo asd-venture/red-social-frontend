@@ -12,27 +12,21 @@ const UserPosts = ({id, another}) => {
   const getApiData = async () => {
     const url = `http://localhost:3000/posts/user/${id}`;
     const response = await fetch(url)
-    .then(response=> response.json())
-    .catch(e => {
-        console.log('e', e)
-    })
+    const data = await response.json()
 
-    setPosts(response);
+    setPosts(data);
   }
 
   const getUserId = async () => {
     const url = "http://localhost:3000/users";
     const response = await fetch(url)
-    .then(response=> response.json())
-    .then(response=> response.map((users)=>(
-        user.email==users.email?
+    const data = await response.json()
+
+    data.forEach(users => {
+      if(user.email==users.email){
         setUserdata(users)
-            :
-        null
-    )))
-    .catch(e => {
-        console.log('e', e)
-    })
+      }
+    });
   }
 
   useEffect(()=>{

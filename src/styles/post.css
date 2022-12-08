@@ -7,11 +7,6 @@
     display: flex;
 }
 
-.perfilEdit{
-    display: flex;
-    justify-content: space-between;
-}
-
 .userPost img, .userPost div{
     padding: 2vh;
 }
@@ -36,26 +31,6 @@
     font-size: 1.4vh;
 }
 
-.delete{
-    font-size: 4vh;
-    margin: 2.5vh;
-    cursor: pointer;
-}
-
-.deleteBotton{
-    background-color: rgba(185, 185, 185, 0.575);
-    font-size: 2vh;
-    padding: 0.5vh;
-    color: black;
-    float: left;
-    margin-top: 1.5vh;
-    border-radius: 1vh;
-}
-
-.deleteBotton:hover{
-    background-color: rgb(185, 185, 185);
-}
-
 .contentPost{
     padding: 2rem 8rem;
     margin: 3vh 0;
@@ -64,11 +39,20 @@
 
 .LikeComment{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
+.LikeComment button{
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}
+
 .like{
-    color: black;
     display: flex;
     padding: 1vh 5vh;
 }
@@ -87,14 +71,6 @@
     background: rgb(215, 215, 215);
 }
 
-.LikeComment button{
-    cursor: pointer;
-    text-decoration: none;
-    outline: none;
-    background-color: transparent;
-    border: none;
-    font-weight: bold;
-}
 
 @media (prefers-color-scheme: dark) {
 
@@ -118,4 +94,25 @@
         background: #393939;
     }
 
+    .like, .LikeComment:nth-child(2){
+        border: 1px solid rgba(128, 128, 128, 0.712);
+    }
+
+}
+
+@media screen and (max-width:800px){
+
+    .contentPost{
+        padding: 3vh;
+        font-size: 1.8vh;
+    }
+
+    .LikeComment{
+        display: grid;
+        row-gap: 1vh;
+    }
+
+    .like, .LikeComment:nth-child(2){
+        padding: 1vh;
+    }
 }

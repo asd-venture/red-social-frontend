@@ -26,10 +26,6 @@ const ToPost = ({id}) => {
             },
             body: JSON.stringify(datos)
         })
-        .then(response => response.json())
-        .catch(e => {
-        console.log('e', e);
-        })
 
         event.target.reset()
     }

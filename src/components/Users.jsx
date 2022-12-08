@@ -14,12 +14,9 @@ const Users = () => {
 
     const getApiData = async () => {
         const response = await fetch(url)
-        .then(response=> response.json())
-        .catch(e => {
-            console.log('e', e)
-        })
+        const data = await response.json()
 
-        setUsers(response);
+        setUsers(data);
     }
 
     useEffect(()=>{

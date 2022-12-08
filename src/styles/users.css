@@ -12,6 +12,10 @@
     margin-bottom: 5vh;
 }
 
+.other h1{
+    line-height: 2vh;
+}
+
 .boxUsers{
     padding: 2vh;
     overflow-y: scroll;

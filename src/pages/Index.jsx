@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Terms from '../components/Terms'
 import '../styles/index.css'
+import Logo from '/logoBrain.png'
 
 const Index = () => {
 
@@ -14,7 +15,7 @@ const Index = () => {
         <div className='index'>
             <div className={isActive ? 'image' :'onlyImage'}> 
                 <h1> BrightRead</h1>
-                <img src="../../logoBrain.png" alt="Logo de la pagina"/>
+                <img src={Logo} alt="Logo de la pagina"/>
                 <button onClick={handleClick}> {isActive ? 'return':'Continue'} </button>
             </div>
                 {isActive &&(
