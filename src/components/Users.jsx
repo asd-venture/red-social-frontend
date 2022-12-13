@@ -1,28 +1,15 @@
-import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from "react-router-dom"
+import { useQuery } from 'react-query'
+import { usersApi } from '../apis/usersApi'
 import '../styles/users.css'
 import perfilDefault from '../assets/perfilDefault.webp'
-
-const url = "http://localhost:3000/users";
 
 const Users = () => {
 
     const { user } = useAuth0();
-    const [users, setUsers] = useState();
-
-
-    const getApiData = async () => {
-        const response = await fetch(url)
-        const data = await response.json()
-
-        setUsers(data);
-    }
-
-    useEffect(()=>{
-        getApiData()
-    }, [])
-
+    const {data: users, error, isLoading} = useQuery('userData', usersApi);
+    
     return (
         <div className='users'>
             <div className='other'>

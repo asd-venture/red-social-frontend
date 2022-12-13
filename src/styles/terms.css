@@ -7,16 +7,16 @@
     padding: 3vh;
 }
 
-.terms p h3{
+.listaIngresar h3{
     padding: 3vh;
 }
 
-.terms p ul{
+.listaIngresar ul{
     padding: 2vh;
     margin-left: 3vh;
 }
 
-.terms div{
+.divAccept{
     padding: 3vh;
     display: flex;
     align-items: center;
@@ -63,7 +63,11 @@
         color: white;
     }
 
-    .terms div label{
+    .listaIngresar{
+        color: white;
+    }
+
+    .divAccept label{
         color: white;
     }
 

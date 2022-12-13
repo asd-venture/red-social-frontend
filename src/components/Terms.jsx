@@ -14,7 +14,7 @@ const Terminos = () => {
   return (
     <div className='terms'>
         <h1> Bienvenido! </h1>
-        <p>
+        <div className='listaIngresar'>
           <h3> Antes de ingresar a tu cuenta tienes que cumplir estos terminos </h3>
           <ul> 
               <li> Pasarle Bien </li>
@@ -23,8 +23,8 @@ const Terminos = () => {
               <li> Divertirse en todo momento </li>
               <li> Compartir cosas interesantes </li>
           </ul>
-        </p>
-        <div>
+        </div>
+        <div className='divAccept'>
           <input type="checkbox" checked={checked} onChange={handleChange} id="accept" className='boxAccept' />
           <label htmlFor="accept">Aceptar terminos</label>
         </div>

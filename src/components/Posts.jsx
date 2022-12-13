@@ -36,7 +36,7 @@ const Posts = () => {
   }, [])
 
   return (
-    <div className='posts'>
+    <div className='posts' id='posts'>
       { posts &&
           userdata &&
             posts.map(lastPosts=>(
