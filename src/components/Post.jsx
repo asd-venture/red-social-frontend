@@ -2,51 +2,39 @@ import { useState, useEffect, useReducer } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import { postLikesApi, createLike, deleteLike } from '../apis/likesApi'
 import Comments from './Comments'
-import { postLikesApi } from '../apis/likesApi'
 import '../styles/post.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
 
 const Post = ({postdata, userdata}) => {
     
+    const id = postdata.postid
+    const {data: like, error, isLoading, refetch} = useQuery(['likeData', id], ()=> postLikesApi(id))
     const { user } = useAuth0();
     const [isLikeActive, setIsLikeActive] = useState(false);
     const [isCommentActive, setIsCommentActive] = useState(false);
     const [reducerValue, forceUpdate] = useReducer( x => x + 1 , 0)
 
-    const addData = async()=>{
-        const url = "http://localhost:3000/likes";
-        const response = await fetch(url, {
-            method: 'POST',
-            mode: 'cors',
-            headers:{
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            body: JSON.stringify({
-                useridlike: userdata.userid,
-                postidlike: postdata.postid,
-            })
-        })
+    const addData = ()=>{
+        const body = {
+            useridlike: userdata.userid,
+            postidlike: postdata.postid
+        }
+        createLike(body).then(response=>refetch())
 
-        forceUpdate()
     }
 
-    const deleteLike = async()=>{
-        const id = like.likeid
-        const url = `http://localhost:3000/likes/${id}`;
-        const response = await fetch(url, {
-        method: 'DELETE', 
-        mode: 'cors'
-        })
-        
-        forceUpdate()
+
+    const deleteLikeUser = ()=>{
+        const currentLike = like.find(l=>l.email == user.email)
+        deleteLike(currentLike.likeid).then(reponse=>refetch())
     }
     
     const handleClickLike = ()=>{        
         setIsLikeActive(current => !current)
-        isLikeActive ? deleteLike(): addData();
+        isLikeActive ? deleteLikeUser() : addData()
     }
 
     const handleClickComment = ()=>{        
@@ -96,17 +84,15 @@ const Post = ({postdata, userdata}) => {
     //         }
     //     })
     // }
-    
-    const id = postdata.postid
-    const {data: like, error, isLoading} = useQuery(['likeData', id], ()=> postLikesApi(id))
 
     useEffect(()=>{
         for (const userLike in like){
             if(like[userLike].email==user.email){
+
                 setIsLikeActive(true)
             }
         }
-    }, [reducerValue, like]);
+    }, [like]);
 
     if(isLoading) return <h1> </h1>
 
