@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { createPost } from '../apis/postsApi'
 import '../styles/toPost.css'
 
-const url = "http://localhost:3000/posts";
 const ToPost = ({id}) => {
 
     const [datos, setDatos] = useState({
@@ -17,16 +17,7 @@ const ToPost = ({id}) => {
     }
 
     const sendData = async event=>{
-        const response = await fetch(url, {
-            method: 'POST',
-            mode: 'cors',
-            headers:{
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            body: JSON.stringify(datos)
-        })
-
+        createPost(datos)
         event.target.reset()
     }
 

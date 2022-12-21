@@ -7,15 +7,13 @@ import Comments from './Comments'
 import '../styles/post.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
-
 const Post = ({postdata, userdata}) => {
     
-    const id = postdata.postid
-    const {data: like, error, isLoading, refetch} = useQuery(['likeData', id], ()=> postLikesApi(id))
     const { user } = useAuth0();
+    const {data: like, refetch} = useQuery(['likesData', postdata.postid], ()=> postLikesApi(postdata.postid))
+
     const [isLikeActive, setIsLikeActive] = useState(false);
     const [isCommentActive, setIsCommentActive] = useState(false);
-    const [reducerValue, forceUpdate] = useReducer( x => x + 1 , 0)
 
     const addData = ()=>{
         const body = {
@@ -23,9 +21,7 @@ const Post = ({postdata, userdata}) => {
             postidlike: postdata.postid
         }
         createLike(body).then(response=>refetch())
-
     }
-
 
     const deleteLikeUser = ()=>{
         const currentLike = like.find(l=>l.email == user.email)
@@ -41,60 +37,13 @@ const Post = ({postdata, userdata}) => {
         setIsCommentActive(current => !current)
     }
 
-    // const getUserLikes = async()=>{
-    //     const id = userdata.userid
-    //     const url = `http://localhost:3000/likes/user/${id}`;
-    //     const response = await fetch(url)
-    //     const data = await response.json()
-
-    //     for(const userLikes in data){
-    //         if(userLikes.postidlike==postdata.postid){
-    //             setIsLikeActive(true)
-    //         }
-    //     }
-    // }
-
-    // for(userLikes in like){
-    //     console.log(userLikes)
-    //     userLikes.email==user.email?
-    //         setIsLikeActive(true)
-    //         :
-    //         null
-    // }
-
-    
-    // const getPostLikes = async ()=>{
-    //     const id = postdata.postid
-    //     const url = `http://localhost:3000/likes/post/${id}`;
-    //     const response = await fetch(url)
-    //     const data = await response.json()
-
-
-    //     setLike(data.likes)
-    // }
-
-    // const {data: likeId, error, isLoading} = useQuery('likeData', likesApi)
-    
-    // if(likeId){
-    //     likeId.map(likes=>{
-    //         if(userdata.userid==likes.useridlike && postdata.postid==likes.postidlike){
-    //             setLike(likes)
-    //             userdata &&(getUserLikes())
-    //             postdata &&(getPostLikes())
-    //         }
-    //     })
-    // }
-
     useEffect(()=>{
         for (const userLike in like){
             if(like[userLike].email==user.email){
-
                 setIsLikeActive(true)
             }
         }
     }, [like]);
-
-    if(isLoading) return <h1> </h1>
 
     return (
         userdata &&(

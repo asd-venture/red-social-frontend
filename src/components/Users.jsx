@@ -10,6 +10,9 @@ const Users = () => {
     const { user } = useAuth0();
     const {data: users, error, isLoading} = useQuery('userData', usersApi);
     
+    if(isLoading) return <h1 className='loading'> loading... </h1>
+    if(error) return <h1 className='error'>Something was wrong</h1>
+
     return (
         <div className='users'>
             <div className='other'>
@@ -20,7 +23,7 @@ const Users = () => {
                     users.map(usersProfile=>( 
                         user.email == usersProfile.email ? '' 
                             :
-                        <Link to={'/profile/'+usersProfile.userid} key={usersProfile.email} className='otherUsers'>
+                        <Link to={'/profile/'+usersProfile.email} key={usersProfile.email} className='otherUsers'>
                             <img src={usersProfile.picture} className='usersPerfilPicture' onError={event=>{
                                 event.target.src = perfilDefault
                                 event.onerror = null

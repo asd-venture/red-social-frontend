@@ -21,7 +21,8 @@ function App() {
             <Route path='/' element={<Home/>} />
             <Route path='/home' element={<Home/>} />
             <Route path='/profile' element={<Profile/>} />
-            <Route path='/profile/:id' element={<Profile/>} />
+            <Route path='/profile/:email' element={<Profile/>} />
+            <Route path='*' element={<Error404/>}/>
           </Routes>
               :
           <Routes>

@@ -1,46 +1,25 @@
-import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useQuery } from 'react-query'
+import { userEmailApi } from '../apis/usersApi'
+import { postsUserApi } from '../apis/postsApi'
 import Post from './Post'
 import '../styles/userPosts.css'
 
 const UserPosts = ({id, another}) => {
 
   const { user } = useAuth0();
-  const [posts, setPosts] = useState();
-  const [userdata, setUserdata] = useState();
+  const {data: userEmail} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
+  const {data: postsUser, error, isLoading} = useQuery(['postsUserData', id], ()=>postsUserApi(id));
+  
+  if(isLoading) return <h1 className='loading'> loading... </h1>
+  if(error) return <h1 className='error'>Something was wrong</h1>
 
-  const getApiData = async () => {
-    const url = `http://localhost:3000/posts/user/${id}`;
-    const response = await fetch(url)
-    const data = await response.json()
-
-    setPosts(data);
-  }
-
-  const getUserId = async () => {
-    const url = "http://localhost:3000/users";
-    const response = await fetch(url)
-    const data = await response.json()
-
-    data.forEach(users => {
-      if(user.email==users.email){
-        setUserdata(users)
-      }
-    });
-  }
-
-  useEffect(()=>{
-      getApiData();
-      getUserId();
-  }, [])
-          
   return (
     <div className={another?'anotherUserPosts':'userPosts'}>
-  
-      {posts &&
-        posts.message != 'The user does not have any post'?
-          posts.map(lastPosts=>(
-            <Post key={lastPosts.postid} postdata={lastPosts} userdata={userdata} confDelete={another?false:true}/>
+      {postsUser &&
+        postsUser.message != 'The user does not have any post'?
+          postsUser.map(lastPosts=>(
+            <Post key={lastPosts.postid} postdata={lastPosts} userdata={userEmail} confDelete={another?false:true}/>
             ))
           :
           <h1> The user does not have any post</h1>

@@ -7,7 +7,7 @@ const Error404 = () => {
       <div className='error'>
         <img src={Logo} alt="Logo de la pagina"/>
         <div>
-          <h1> Error 404 </h1>    
+          <h1> Error 404 </h1>
           <p> Direccion no encontrada </p>
         </div>
     </div>

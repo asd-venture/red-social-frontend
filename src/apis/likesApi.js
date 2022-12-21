@@ -11,7 +11,7 @@ export const postLikesApi = async (id)=>{
         return response.data
     } catch (error) {
         console.log(error);
-        throw new Error('Erro al cargar las peticiones');
+        throw new Error('Error al cargar las peticiones');
     }
 }
 
@@ -30,6 +30,6 @@ export const deleteLike = async (id)=>{
         return response.data
     } catch (error) {
         console.log(error);
-        throw new Error('Erro al eliminar el like');
+        throw new Error('Error al eliminar el like');
     }
 }

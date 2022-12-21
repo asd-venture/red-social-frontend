@@ -2,6 +2,7 @@
     grid-area: userPosts;
     height: 50vh;
     overflow-y: scroll;
+    overflow: overlay;
     margin-right: 2vh;
 }
 

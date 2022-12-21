@@ -50,6 +50,11 @@ body {
   min-height: 100vh; */
 } 
 
+.loading, .error{
+  color: black;
+  padding: 5vh;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color: #262f38;
@@ -73,5 +78,8 @@ body {
   }
   button {
     background-color: #1a1a1a;
+  }
+  .loading, .error{
+    color: white;
   }
 }

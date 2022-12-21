@@ -2,7 +2,6 @@ import { useState } from 'react'
 import '../styles/terms.css'
 import LoginButton from '../components/LoginButton'
 
-
 const Terminos = () => {
 
   const [checked, setChecked] = useState(false);
