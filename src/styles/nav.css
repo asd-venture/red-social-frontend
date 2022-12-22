@@ -1,5 +1,9 @@
 nav{
     grid-area: nav;
+    background-color: rgb(233, 233, 233);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -63,6 +67,10 @@ nav button:focus-visible {
 
 @media (prefers-color-scheme: dark) {
 
+    nav{
+        background-color: rgb(43, 43, 43);
+    }
+
     .navProfile:hover{
         background-color: #39393936;
         border-radius: 15%;
@@ -90,7 +98,6 @@ nav button:focus-visible {
     nav div{
         justify-content: center;
     }
-
     
     nav div:nth-child(3){
         margin: 1vh 0;

@@ -1,6 +1,21 @@
 .posts{
     grid-area: posts;
-    height: 68vh;
     padding: 3vh;
-    overflow-y: scroll; 
+}
+
+.postsLoading, .postsLoading div{
+    width: 100%;
+    height: 70%;
+}
+
+@media (prefers-color-scheme: dark) {
+    .posts div{
+        color: white;
+    }
+}
+
+@media screen and (max-width:800px){
+    .posts{
+        height: max-content;
+    }
 }

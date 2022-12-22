@@ -11,13 +11,18 @@
 
 .profileUser{
     grid-area: userProfile;
+    height: 86vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 13.2vh;
     text-align: center;
     margin-left: 2vh;
+    align-items: center;
 }
 
 .profileUser img{
-    width: 40vh;
-    margin: 5vh;
+    width: 70%;
+    margin: 25% 5%;
 }
 
 .profileUser h2{
@@ -40,4 +45,30 @@
     .profile h2{
         color: white;
     }
+}
+
+@media screen and (max-width:800px){
+    .profile{
+        grid-template-areas: 
+        "nav"
+        "userProfile"
+        "postsUser";
+    }
+
+    .profileUser{
+        position: static;
+        height: max-content;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .profileUser img{
+        width: 10vh;
+    }
+
 }

@@ -6,8 +6,9 @@
 
 .toPost h1{
     text-align: center;
-    padding: 4vh;
-    font-size: 6vh;
+    padding: 3vh;
+    font-size: 5vh;
+    line-height: 100%;
 }
 
 .toPost form{
@@ -19,7 +20,6 @@
     width: 100%;
     font-size: 2vh;
     padding: 1.5vh;
-    margin: 1vh;
     border-radius: 1vh;
 }
 
@@ -29,7 +29,7 @@
     border: 1px solid transparent;
     padding: 2vh 3vh;
     font-weight: 500;
-    font-size: 1em;
+    font-size: 2.5vh;
     font-family: inherit;
     background-color: #f9f9f9;
     cursor: pointer;
@@ -64,5 +64,12 @@
     .toPost form button:focus,
     button:focus-visible {
         outline: none;
+    }
+}
+
+@media screen and (max-width:800px){
+    .toPost{
+        margin: 0;
+        border-radius: 0;
     }
 }

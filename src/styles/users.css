@@ -1,6 +1,9 @@
 .users{
     grid-area: users;
     height: 85vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 13.5vh;
     display: grid;
     margin-right: 2vh;
 }
@@ -17,6 +20,7 @@
 }
 
 .boxUsers{
+    height: 65vh;
     padding: 2vh;
     overflow-y: scroll;
     overflow: overlay;

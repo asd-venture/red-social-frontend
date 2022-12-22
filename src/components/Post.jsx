@@ -10,7 +10,7 @@ import perfilDefault from '../assets/perfilDefault.webp'
 const Post = ({postdata, userdata}) => {
     
     const { user } = useAuth0();
-    const {data: like, refetch} = useQuery(['likesData', postdata.postid], ()=> postLikesApi(postdata.postid))
+    const {data: like, error, isLoading, refetch} = useQuery(['likesData', postdata.postid], ()=> postLikesApi(postdata.postid))
 
     const [isLikeActive, setIsLikeActive] = useState(false);
     const [isCommentActive, setIsCommentActive] = useState(false);
@@ -47,8 +47,8 @@ const Post = ({postdata, userdata}) => {
 
     return (
         userdata &&(
-            <div className='postBox'>  
-                <Link to={postdata.email == user.email ? '/profile' : '/profile/'+postdata.userid} className='userPost'>
+            <div className='postBox'>
+                <Link to={postdata.email == user.email ? '/profile' : '/profile/'+postdata.email} className='userPost'>
                     <img src={postdata.picture} onError={event=>{
                             event.target.src = perfilDefault
                             event.onerror = null
@@ -61,15 +61,19 @@ const Post = ({postdata, userdata}) => {
                 </Link>
                 <p className='contentPost'>{postdata.content}</p>
                 <div className='LikeComment'>
-                    {
-                    like&&(
+                    { isLoading&&(
+                        <button className='likeDesactive' disabled={true}> Like </button>
+                    )}
+                    { error&&(
+                        <button className='likeDesactive' disabled={true}> Like </button>
+                    )}
+                    { like&&(
                         <button className={ isLikeActive ? 'likeActive' : 'like'} 
                             onClick={handleClickLike}
                         >Like { like && <pre> {Object.keys(like).length} </pre> } </button> 
                         
-                    )
-                    }
-                    <button onClick={handleClickComment}>Comment</button>
+                    )}
+                    <button className='buttonComment' onClick={handleClickComment}>Comment</button>
                 </div>
                 { 
                     isCommentActive &&(

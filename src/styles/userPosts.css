@@ -1,16 +1,10 @@
 .userPosts{
     grid-area: userPosts;
-    height: 50vh;
-    overflow-y: scroll;
-    overflow: overlay;
     margin-right: 2vh;
 }
 
 .anotherUserPosts{
     grid-area: userPosts;
-    height: 84vh;   
-    overflow-y: scroll;
-    overflow: overlay;
 }
 
 .userPosts h1{
@@ -29,5 +23,14 @@
 
     .userPosts h1, .anotherUserPosts h1{
         color: white;
+    }
+
+}
+
+@media screen and (max-width:800px){
+    .userPosts, .anotherUserPosts{
+        margin: 0;
+        border-radius: 0;
+        height: max-content;
     }
 }

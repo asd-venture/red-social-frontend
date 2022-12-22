@@ -10,8 +10,18 @@ const Users = () => {
     const { user } = useAuth0();
     const {data: users, error, isLoading} = useQuery('userData', usersApi);
     
-    if(isLoading) return <h1 className='loading'> loading... </h1>
     if(error) return <h1 className='error'>Something was wrong</h1>
+    
+    if(isLoading) return (
+        <div className='users'> 
+            <div className='other'>
+                <h1>Other Users</h1>
+            </div>
+            <div className='boxUsers'>
+                <div className='otherUsers'></div>
+            </div>
+        </div>
+        )
 
     return (
         <div className='users'>

@@ -5,12 +5,13 @@ import { usersApi } from '../apis/usersApi'
 import { postsApi } from '../apis/postsApi'
 import Post from './Post'
 import '../styles/posts.css'
+import '../styles/post.css'
 
 const Posts = () => {
 
   const { user } = useAuth0();
-  const {data: users, error, isLoading} = useQuery('userData', usersApi);
-  const {data: posts} = useQuery('postsData', postsApi)
+  const {data: users} = useQuery('userData', usersApi);
+  const {data: posts, error, isLoading} = useQuery('postsData', postsApi)
   const [userdata, setUserdata] = useState();
 
   useEffect(()=>{
@@ -21,18 +22,32 @@ const Posts = () => {
     };
   }, [users])
 
-  if(isLoading) return <h1 className='loading'> loading... </h1>
   if(error) return <h1 className='error'>Something was wrong</h1>
+
+  if(isLoading) return (
+    <div className='posts'> 
+      <div className='postsLoading'> 
+        <div>
+          <div className='userPost'>
+            <div></div>
+            <div className='nameEmail'></div>
+          </div>
+          <p className='contentPost'></p>
+          <div className='LikeComment'></div>
+        </div>
+
+      </div> 
+    </div>
+    )
 
   return (
     <div className='posts' id='posts'>
-      { posts &&
-          userdata &&
-            posts.map(lastPosts=>(
-              <div key={lastPosts.postid}>
-                <Post postdata={lastPosts} userdata={userdata}/>
-              </div>
-            ))
+      { userdata &&
+          posts.map(lastPosts=>(
+            <div key={lastPosts.postid}>
+              <Post postdata={lastPosts} userdata={userdata}/>
+            </div>
+          ))
       }
     </div>
   )

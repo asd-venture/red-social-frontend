@@ -32,6 +32,9 @@ const Comments = ({postdata, userdata}) => {
     event.target.reset()
 }
 
+  if(isLoading) return <h1 className='loading'> loading...</h1> 
+  if(error) return <h1 className='error'>Something was wrong</h1>
+
   return (
     <div className='comments'>
       <h4> Comments </h4>
@@ -41,23 +44,19 @@ const Comments = ({postdata, userdata}) => {
       </form>
       <div className='boxComments'>
         {
-        comments &&
-          comments != false?
-            comments.map(lastComments=>(
-                <Link to={lastComments.email == user.email ? '/profile' : '/profile/'+lastComments.userid} key={lastComments.commentid} className='comment'>
-                  <img src={lastComments.picture} className='usersPerfilPicture' onError={event=>{
-                                event.target.src = perfilDefault
-                                event.onerror = null
-                            }}/>
-                  <div>
-                    <h5> {lastComments.username} </h5>
-                    <p> {lastComments.nota} </p>
-                  </div>
+        comments.map(lastComments=>(
+            <Link to={lastComments.email == user.email ? '/profile' : '/profile/'+lastComments.email} key={lastComments.commentid} className='comment'>
+              <img src={lastComments.picture} className='usersPerfilPicture' onError={event=>{
+                            event.target.src = perfilDefault
+                            event.onerror = null
+                        }}/>
+              <div>
+                <h5> {lastComments.username} </h5>
+                <p> {lastComments.nota} </p>
+              </div>
 
-                </Link>
-            ))
-            :
-            null
+            </Link>
+        ))
         }
       </div>
     </div>

@@ -11,12 +11,12 @@ import perfilDefault from '../assets/perfilDefault.webp'
 const Profile = () => {
     
     const { user } = useAuth0();
-    let { email } = useParams();
+    const { email } = useParams();
 
     const selectEmail = email ? email : user.email
     const {data: userEmail, error, isLoading} = useQuery(['userEmail', selectEmail], ()=>userEmailApi(selectEmail));
 
-    if(isLoading) return <h1> loading...</h1> 
+    if(isLoading) return <h1 className='loading'> loading...</h1> 
     if(error) return <h1 className='error'>Something was wrong</h1>
     
     return (
@@ -27,8 +27,10 @@ const Profile = () => {
                     event.target.src = perfilDefault
                     event.onerror = null
                 }} />
-                <h2> {userEmail.username} </h2>
-                <p> {userEmail.email} </p>
+                <div>
+                    <h2> {userEmail.username} </h2>
+                    <p> {userEmail.email} </p>
+                </div>
             </div>
             <div className="postsUser">
                 { !email&&<ToPost id={userEmail.userid}/> }

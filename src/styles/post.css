@@ -52,7 +52,7 @@
     font-weight: bold;
 }
 
-.like{
+.like, .likeDesactive{
     display: flex;
     padding: 1vh 5vh;
 }
@@ -71,14 +71,13 @@
     background: rgb(215, 215, 215);
 }
 
-
 @media (prefers-color-scheme: dark) {
 
     .email{
         color: rgba(255, 255, 255, 0.453);
     }
 
-    .like{
+    .like, .likeDesactive{
         color: white;
     }
 
@@ -94,7 +93,7 @@
         background: #393939;
     }
 
-    .like, .LikeComment:nth-child(2){
+    .likeComment button{
         border: 1px solid rgba(128, 128, 128, 0.712);
     }
 
@@ -112,7 +111,11 @@
         row-gap: 1vh;
     }
 
-    .like, .LikeComment:nth-child(2){
+    .buttonComment{
         padding: 1vh;
+    }
+
+    .like, .likeActive, .buttonComment{
+        font-size: 1.6vh;
     }
 }
