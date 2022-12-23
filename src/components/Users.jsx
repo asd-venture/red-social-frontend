@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from "react-router-dom"
 import { useQuery } from 'react-query'
 import { usersApi } from '../apis/usersApi'
+import Load from './Load'
 import '../styles/users.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
@@ -18,7 +19,9 @@ const Users = () => {
                 <h1>Other Users</h1>
             </div>
             <div className='boxUsers'>
-                <div className='otherUsers'></div>
+                <div className='usersLoad'>
+                    <Load/>
+                </div>
             </div>
         </div>
         )

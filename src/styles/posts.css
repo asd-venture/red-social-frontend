@@ -3,6 +3,11 @@
     padding: 3vh;
 }
 
+.postsLoad{
+    grid-area: posts;
+    height: 60vh;
+}
+
 .postsLoading, .postsLoading div{
     width: 100%;
     height: 70%;

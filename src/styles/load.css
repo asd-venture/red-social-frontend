@@ -1,0 +1,32 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+  
+@keyframes load {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+  
+.load {
+    margin: 1vh;
+    height: 50px;
+    width: 50px;
+    border: 6px solid #e1e1e1cc;
+    border-top-color: #646cff;
+    border-bottom-color: #646cff;
+    border-radius: 100%;
+    animation: load 1.5s infinite linear;
+}
+
+@media (prefers-color-scheme: dark) {
+    .load{
+        border: 6px solid #e1e1e1cc;
+        border-top-color: hsla(278, 51%, 76%, 0.186);
+        border-bottom-color: hsla(278, 51%, 76%, 0.186);
+    }
+}

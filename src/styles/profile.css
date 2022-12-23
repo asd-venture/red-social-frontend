@@ -1,3 +1,10 @@
+.profileLoad{
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
 .profile{
     display: grid;
     grid-template-rows: auto;
@@ -11,26 +18,22 @@
 
 .profileUser{
     grid-area: userProfile;
-    height: 86vh;
+    height: 84vh;
     position: -webkit-sticky;
     position: sticky;
-    top: 13.2vh;
+    top: 15vh;
     text-align: center;
     margin-left: 2vh;
     align-items: center;
 }
 
 .profileUser img{
-    width: 70%;
-    margin: 25% 5%;
+    width: 30vh;
+    padding: 5vh;
 }
 
-.profileUser h2{
-    margin: 3vh;
-}
-
-.profileUser p{
-    margin: 3vh;
+.profileUser h2, .profileUser p{
+    padding: 2vh;
 }
 
 .postsUser{
@@ -47,7 +50,7 @@
     }
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:1000px){
     .profile{
         grid-template-areas: 
         "nav"
@@ -56,19 +59,17 @@
     }
 
     .profileUser{
-        position: static;
-        height: max-content;
-        display: grid;
-        grid-template-columns: auto auto;
+        display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 5%;
+        position: static;
+        height: max-content;
         margin: 0;
         border-radius: 0;
     }
 
-    .profileUser img{
-        width: 10vh;
+    .profileUser h2, .profileUser p{
+        font-size: 2vh;
     }
 
 }

@@ -5,6 +5,7 @@ import { userEmailApi } from '../apis/usersApi'
 import Nav from '../components/Nav'
 import UserPosts from '../components/UserPosts'
 import ToPost from '../components/ToPost'
+import Load from '../components/Load'
 import '../styles/profile.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
@@ -16,7 +17,7 @@ const Profile = () => {
     const selectEmail = email ? email : user.email
     const {data: userEmail, error, isLoading} = useQuery(['userEmail', selectEmail], ()=>userEmailApi(selectEmail));
 
-    if(isLoading) return <h1 className='loading'> loading...</h1> 
+    if(isLoading) return <div className='profileLoad'> <Load/> </div>
     if(error) return <h1 className='error'>Something was wrong</h1>
     
     return (

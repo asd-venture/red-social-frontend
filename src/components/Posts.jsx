@@ -25,20 +25,18 @@ const Posts = () => {
   if(error) return <h1 className='error'>Something was wrong</h1>
 
   if(isLoading) return (
-    <div className='posts'> 
+    <div className='postsLoad'> 
       <div className='postsLoading'> 
         <div>
           <div className='userPost'>
-            <div></div>
             <div className='nameEmail'></div>
           </div>
           <p className='contentPost'></p>
           <div className='LikeComment'></div>
         </div>
-
       </div> 
     </div>
-    )
+  )
 
   return (
     <div className='posts' id='posts'>

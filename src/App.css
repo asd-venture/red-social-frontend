@@ -2,3 +2,10 @@
   width: 100%;
   border-radius: 0;
 }
+
+.appLoad{
+  height: 100vh;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}

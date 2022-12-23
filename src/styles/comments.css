@@ -52,6 +52,11 @@
     color: black;
 }
 
+.commentsLoad{
+    display: flex;
+    justify-content: center; 
+}
+
 .comment{
     margin-top: 0.5vh;
     display: grid;
@@ -59,14 +64,16 @@
     border-radius: 2vh;
 }
 
-.comment div{
-    padding: 1vh;
-    border-radius: 2vh;
-}
-
 .comment img{
     margin: 1vh;
+    width: 5vh;
 }
+
+.comment div{
+    padding: 1vh;
+    margin-left: 1vh;
+    border-radius: 2vh;
+}    
 
 .comment h5{
     padding: 0.5vh;
@@ -107,7 +114,10 @@
     
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:1000px){
 
+    .comment div{
+        margin-left: 3.5vh;
+    }
     
 }

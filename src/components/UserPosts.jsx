@@ -11,8 +11,21 @@ const UserPosts = ({id, another}) => {
   const {data: userEmail} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
   const {data: postsUser, error, isLoading} = useQuery(['postsUserData', id], ()=>postsUserApi(id));
   
-  if(isLoading) return <h1 className='loading'> loading... </h1>
   if(error) return <h1 className='error'>Something was wrong</h1>
+
+  if(isLoading) return (
+    <div className='postsUserLoad'> 
+      <div className='postsUserLoading'> 
+        <div>
+          <div className='userPost'>
+            <div className='nameEmail'></div>
+          </div>
+          <p className='contentPost'></p>
+          <div className='LikeComment'></div>
+        </div>
+      </div> 
+    </div>
+  )
 
   return (
     <div className={another?'anotherUserPosts':'userPosts'}>
