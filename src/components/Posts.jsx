@@ -1,52 +1,53 @@
 import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useQuery } from 'react-query'
-import { usersApi } from '../apis/usersApi'
+import { useQuery, useInfiniteQuery } from 'react-query'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import { userEmailApi } from '../apis/usersApi'
 import { postsApi } from '../apis/postsApi'
 import Post from './Post'
+import PostsLoading from './PostsLoading'
+import Load from './Load'
 import '../styles/posts.css'
-import '../styles/post.css'
 
 const Posts = () => {
 
   const { user } = useAuth0();
-  const {data: users} = useQuery('userData', usersApi);
-  const {data: posts, error, isLoading} = useQuery('postsData', postsApi)
-  const [userdata, setUserdata] = useState();
+  // const [posts, setPosts] = useState([])
+  const [load, setLoad] = useState(1)
 
-  useEffect(()=>{
-    for(const u in users){
-      if (user.email==users[u].email) {
-        setUserdata(users[u])
-      }
-    };
-  }, [users])
+  const {data: users} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
+  const {data: posts, error, isLoading, hasNextPage, fetchNextPage} = useInfiniteQuery(['postsInfiniteData'], ({pageParam=1})=>postsApi(pageParam), {
+    getNextPageParam: (lastPage)=>{
+      return true;
+    },
+  });
+
+  // useEffect(()=>{
+  //   postsApi(load)
+  //   .then(data=>{
+  //     setPosts(preData=>preData.concat(data));
+  //   });
+  // }, [load])
 
   if(error) return <h1 className='error'>Something was wrong</h1>
-
-  if(isLoading) return (
-    <div className='postsLoad'> 
-      <div className='postsLoading'> 
-        <div>
-          <div className='userPost'>
-            <div className='nameEmail'></div>
-          </div>
-          <p className='contentPost'></p>
-          <div className='LikeComment'></div>
-        </div>
-      </div> 
-    </div>
-  )
+  
+  if(isLoading) return <PostsLoading/>
 
   return (
     <div className='posts' id='posts'>
-      { userdata &&
-          posts.map(lastPosts=>(
-            <div key={lastPosts.postid}>
-              <Post postdata={lastPosts} userdata={userdata}/>
+      <InfiniteScroll 
+        dataLength={posts.length} 
+        hasMore={true} 
+        next={()=>fetchNextPage()} 
+        loader={<Load/>}
+      >
+        { posts?.pages[0].map((lastPosts, index)=>(
+            <div key={index}>
+              <Post postdata={lastPosts} userdata={users}/>
             </div>
           ))
-      }
+        }
+      </InfiniteScroll>
     </div>
   )
 }

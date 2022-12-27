@@ -5,9 +5,9 @@ const instance = axios.create({
     baseURL: import.meta.env.VITE_URL_API
 })
 
-export const postsApi = async ()=>{
+export const postsApi = async (load=1)=>{
     try {
-        const response = await instance.get('/posts');
+        const response = await instance.get(`/posts?page=${load}&size=5`);
         return response.data
     } catch (error) {
         console.log(error);

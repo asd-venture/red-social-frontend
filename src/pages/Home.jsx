@@ -22,13 +22,12 @@ const Home = () => {
   }, [])
 
   return (
-    user &&
-        <div className='home'>
-          <Nav/>
-          <NewPost />
-          <Posts/>
-          <Users/>
-        </div>
+    <div className='home'>
+      <Nav/>
+      <NewPost/>
+      <Posts/>
+      <Users/>
+    </div>
   )
 }
 
