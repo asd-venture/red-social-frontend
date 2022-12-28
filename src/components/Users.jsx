@@ -32,19 +32,19 @@ const Users = () => {
                 <h1>Other Users</h1>
             </div>
             <div className='boxUsers'>
-                { users &&
-                    users.map(usersProfile=>( 
-                        user.email == usersProfile.email ? '' 
-                            :
-                        <Link to={'/profile/'+usersProfile.email} key={usersProfile.email} className='otherUsers'>
-                            <img src={usersProfile.picture} className='usersPerfilPicture' onError={event=>{
-                                event.target.src = perfilDefault
-                                event.onerror = null
-                            }}/>
-                            <p> {usersProfile.username} </p>        
-                        </Link>
-                    ))
-                }
+            {
+                users.map(usersProfile=>( 
+                    user.email == usersProfile.email ? '' 
+                        :
+                    <Link to={'/profile/'+usersProfile.email} key={usersProfile.email} className='otherUsers'>
+                        <img src={usersProfile.picture} className='usersPerfilPicture' onError={event=>{
+                            event.target.src = perfilDefault
+                            event.onerror = null
+                        }}/>
+                        <p> {usersProfile.username} </p>        
+                    </Link>
+                ))
+            }
             </div>
         </div>
     )
