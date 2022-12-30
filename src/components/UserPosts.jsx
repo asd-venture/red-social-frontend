@@ -1,41 +1,51 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { useQuery } from 'react-query'
+import { useQuery, useInfiniteQuery } from 'react-query'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import { userEmailApi } from '../apis/usersApi'
 import { postsUserApi } from '../apis/postsApi'
 import Post from './Post'
+import PostsLoading from './PostsLoading'
 import '../styles/userPosts.css'
 
 const UserPosts = ({id, another}) => {
 
   const { user } = useAuth0();
   const {data: userEmail} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
-  const {data: postsUser, error, isLoading} = useQuery(['postsUserData', id], ()=>postsUserApi(id));
+  const {data: postsUserData, error, isLoading, hasNextPage, fetchNextPage} = useInfiniteQuery(['postsUserInfinite', id],
+  ({pageParam=1})=>postsUserApi(id, pageParam),
+    {
+      getNextPageParam: (lastPage)=>{
+        if(lastPage.page===lastPage.total_pages) return false
+        return lastPage.page+1;
+      },
+    }
+  );
+
+  const postsUser = postsUserData?.pages.reduce((prevPosts, page)=>prevPosts.concat(page.results), []) ?? [];
+
+  // if(!isLoading && postsUser.length===0){
+  //   return <h1> nada </h1>;
+  // }
   
   if(error) return <h1 className='error'>Something was wrong</h1>
 
-  if(isLoading) return (
-    <div className='postsUserLoad'> 
-      <div className='postsUserLoading'> 
-        <div>
-          <div className='userPost'>
-            <div className='nameEmail'></div>
-          </div>
-          <p className='contentPost'></p>
-          <div className='LikeComment'></div>
-        </div>
-      </div> 
-    </div>
-  )
-
   return (
     <div className={another?'anotherUserPosts':'userPosts'}>
-      {postsUser &&
-        postsUser.message != 'The user does not have any post'?
-          postsUser.map(lastPosts=>(
-            <Post key={lastPosts.postid} postdata={lastPosts} userdata={userEmail} confDelete={another?false:true}/>
-            ))
+      {
+      !isLoading && postsUser.length===0?
+        <h1> The user does not have any post</h1>
           :
-          <h1> The user does not have any post</h1>
+        <InfiniteScroll 
+          dataLength={postsUser.length} 
+          hasMore={hasNextPage | isLoading} 
+          next={()=>fetchNextPage()} 
+          loader={<PostsLoading/>}
+        >
+        { postsUser.map(lastPosts=>(
+            <Post key={lastPosts.postid} postdata={lastPosts} userdata={userEmail}/>
+          ))
+        }
+        </InfiniteScroll>
       }
     </div>
   )

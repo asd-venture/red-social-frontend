@@ -12,7 +12,7 @@ const Posts = () => {
   const { user } = useAuth0();
 
   const {data: users} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
-  const {data: postsData, isLoading, error, hasNextPage, fetchNextPage} = useInfiniteQuery(['postsInfinite'], 
+  const {data: postsData, error, isLoading, hasNextPage, fetchNextPage} = useInfiniteQuery(['postsInfinite'], 
     ({pageParam=1})=>postsApi(pageParam),
     {
       getNextPageParam: (lastPage)=>{

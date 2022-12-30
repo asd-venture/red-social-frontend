@@ -15,9 +15,9 @@ export const postsApi = async (load=1)=>{
     }
 }
 
-export const postsUserApi = async (id)=>{
+export const postsUserApi = async (id, load)=>{
     try {
-        const response = await instance.get(`/posts/user/${id}`);
+        const response = await instance.get(`/posts/user/${id}?page=${load}&size=5`);
         return response.data
     } catch (error) {
         console.log(error);
