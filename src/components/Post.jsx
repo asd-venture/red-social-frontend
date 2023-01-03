@@ -58,8 +58,10 @@ const Post = ({postdata, userdata}) => {
                         <p className='email'>{postdata.email}</p>
                     </div>
                 </Link>
-                <p className='contentPost'>{postdata.content} 
-                {postdata.urlimage &&<img src={postdata.urlimage}/>} </p>
+                <div className='contentPost'>
+                    {postdata.urlimage && <img src={postdata.urlimage}/>} 
+                    {postdata.content && <p>{postdata.content}</p>} 
+                </div>
                 <div className='LikeComment'>
                     { isLoading&&(
                         <button className='likeDesactive' disabled={true}> Like </button>

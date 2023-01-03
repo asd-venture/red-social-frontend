@@ -33,17 +33,20 @@
 }
 
 .contentPost{
-    padding: 2rem 8rem;
-    margin: 3vh 0;
     border: 1px solid rgba(128, 128, 128, 0.253);
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5vh;
 }
 
 .contentPost img{
     text-align: center;
-    width: 50vh;
-    border: 5px solid rgba(21, 21, 21, 0.235);
+    width: 45vh;
+}
+
+.contentPost p{
+    padding: 7vh 3vh;
 }
 
 .LikeComment{
@@ -113,6 +116,12 @@
     .contentPost{
         padding: 3vh;
         font-size: 1.8vh;
+        display: flex;
+    }
+
+    .contentPost p{
+        text-align: center;
+        padding: 0;
     }
 
     .LikeComment{
