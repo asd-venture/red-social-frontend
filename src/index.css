@@ -39,10 +39,6 @@ a:hover {
   color: #646cff;
 }
 
-img{
-  border-radius: 50%;
-}
-
 body {
   display: flex;
   place-items: center;

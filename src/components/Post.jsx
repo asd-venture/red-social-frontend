@@ -46,7 +46,6 @@ const Post = ({postdata, userdata}) => {
     }, [like]);
 
     return (
-        userdata &&(
             <div className='postBox'>
                 <Link to={postdata.email == user.email ? '/profile' : '/profile/'+postdata.email} className='userPost'>
                     <img src={postdata.picture} onError={event=>{
@@ -59,7 +58,8 @@ const Post = ({postdata, userdata}) => {
                         <p className='email'>{postdata.email}</p>
                     </div>
                 </Link>
-                <p className='contentPost'>{postdata.content}</p>
+                <p className='contentPost'>{postdata.content} 
+                {postdata.urlimage &&<img src={postdata.urlimage}/>} </p>
                 <div className='LikeComment'>
                     { isLoading&&(
                         <button className='likeDesactive' disabled={true}> Like </button>
@@ -81,7 +81,6 @@ const Post = ({postdata, userdata}) => {
                     )
                 }
             </div>
-        )
     )
 }
 

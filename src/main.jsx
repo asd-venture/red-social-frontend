@@ -8,7 +8,7 @@ import './index.css'
 
 const queryClient = new QueryClient()
 
-const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+const domain = import.meta.env.VITE_AUTH0_DOMAIN
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID
 const clientUrl = import.meta.env.VITE_URL_DOMAIN 
 

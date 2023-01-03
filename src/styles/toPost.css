@@ -23,6 +23,15 @@
     border-radius: 1vh;
 }
 
+.imageToPost{
+    height: 30vh;
+}
+
+.imageToPost img{
+    height: 100%;
+    /* width: 100%; */
+}
+
 .toPost form button {
     justify-self: right;
     border-radius: 8px;

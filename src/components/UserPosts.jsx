@@ -22,10 +22,6 @@ const UserPosts = ({id, another}) => {
   );
 
   const postsUser = postsUserData?.pages.reduce((prevPosts, page)=>prevPosts.concat(page.results), []) ?? [];
-
-  // if(!isLoading && postsUser.length===0){
-  //   return <h1> nada </h1>;
-  // }
   
   if(error) return <h1 className='error'>Something was wrong</h1>
 

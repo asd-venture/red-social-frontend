@@ -12,6 +12,7 @@
 }
 
 .userPost img{
+    border-radius: 50%;
     width: 10vh;
     height: 10vh;
 }
@@ -35,6 +36,14 @@
     padding: 2rem 8rem;
     margin: 3vh 0;
     border: 1px solid rgba(128, 128, 128, 0.253);
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.contentPost img{
+    text-align: center;
+    width: 50vh;
+    border: 5px solid rgba(21, 21, 21, 0.235);
 }
 
 .LikeComment{
