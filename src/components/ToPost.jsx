@@ -7,9 +7,10 @@ const ToPost = ({id}) => {
     const [datos, setDatos] = useState({
         content: '',
         useridpost: id,
-        image: ''
+        image: null
     })
 
+    console.log(datos)
     const [image, setImage] = useState();
 
     const handleSubmit = event=>{
@@ -20,14 +21,20 @@ const ToPost = ({id}) => {
     }
 
     const sendData = async event=>{
-        createPost(datos)
+        let formData = new FormData()
+        formData.append('content', datos.content)
+        formData.append('useridpost', datos.useridpost)
+        formData.append('image', datos.image)
+        createPost(formData)
         event.target.reset()
     }
 
     const upload = event=>{
         setDatos({
+            ...datos,
             [event.target.name] : event.target.files[0]
         })
+
         setImage(URL.createObjectURL(event.target.files[0]))
     }
 
