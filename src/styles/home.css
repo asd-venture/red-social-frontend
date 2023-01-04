@@ -2,9 +2,9 @@
     display: grid;
     grid-template-rows: auto;
     grid-template-areas: 
-    "nav nav nav nav nav"
-    "newPost newPost newPost users users"
-    "posts posts posts users users";
+    "nav nav nav nav nav nav nav"
+    "newPost newPost newPost newPost newPost newPost users"
+    "posts posts posts posts posts posts users";
     column-gap: 3vh;
     border-radius: 0;
 }

@@ -10,7 +10,6 @@ const ToPost = ({id}) => {
         image: null
     })
 
-    console.log(datos)
     const [image, setImage] = useState();
 
     const handleSubmit = event=>{

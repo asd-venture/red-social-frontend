@@ -8,6 +8,7 @@
 .users{
     grid-area: users;
     height: 85vh;
+    /* width: 50vh; */
     position: -webkit-sticky;
     position: sticky;
     top: 15vh;

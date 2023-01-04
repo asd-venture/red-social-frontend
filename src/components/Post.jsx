@@ -45,44 +45,44 @@ const Post = ({postdata, userdata}) => {
         }
     }, [like]);
 
-    return (
-            <div className='postBox'>
-                <Link to={postdata.email == user.email ? '/profile' : '/profile/'+postdata.email} className='userPost'>
-                    <img src={postdata.picture} onError={event=>{
-                            event.target.src = perfilDefault
-                            event.onerror = null
-                        }}/>
-    
-                    <div className='nameEmail'>
-                        <p className='name' >{postdata.username}</p>
-                        <p className='email'>{postdata.email}</p>
+    return (postdata &&
+                <div className='postBox'>
+                    <Link to={postdata.email == user.email ? '/profile' : '/profile/'+postdata.email} className='userPost'>
+                        <img src={postdata.picture} onError={event=>{
+                                event.target.src = perfilDefault
+                                event.onerror = null
+                            }}/>
+        
+                        <div className='nameEmail'>
+                            <p className='name' >{postdata.username}</p>
+                            <p className='email'>{postdata.email}</p>
+                        </div>
+                    </Link>
+                    <div className='contentPost'>
+                        {postdata.urlimage && <img src={postdata.urlimage}/>} 
+                        {postdata.content && <p>{postdata.content}</p>} 
                     </div>
-                </Link>
-                <div className='contentPost'>
-                    {postdata.urlimage && <img src={postdata.urlimage}/>} 
-                    {postdata.content && <p>{postdata.content}</p>} 
+                    <div className='LikeComment'>
+                        { isLoading&&(
+                            <button className='likeDesactive' disabled={true}> Like </button>
+                        )}
+                        { error&&(
+                            <button className='likeDesactive' disabled={true}> Like </button>
+                        )}
+                        { like&&(
+                            <button className={ isLikeActive ? 'likeActive' : 'like'} 
+                                onClick={handleClickLike}
+                            >Like { like && <pre> {Object.keys(like).length} </pre> } </button> 
+                            
+                        )}
+                        <button className='buttonComment' onClick={handleClickComment}>Comment</button>
+                    </div>
+                    { 
+                        isCommentActive &&(
+                            <Comments className='hide' postdata={postdata} userdata={userdata}/>
+                        )
+                    }
                 </div>
-                <div className='LikeComment'>
-                    { isLoading&&(
-                        <button className='likeDesactive' disabled={true}> Like </button>
-                    )}
-                    { error&&(
-                        <button className='likeDesactive' disabled={true}> Like </button>
-                    )}
-                    { like&&(
-                        <button className={ isLikeActive ? 'likeActive' : 'like'} 
-                            onClick={handleClickLike}
-                        >Like { like && <pre> {Object.keys(like).length} </pre> } </button> 
-                        
-                    )}
-                    <button className='buttonComment' onClick={handleClickComment}>Comment</button>
-                </div>
-                { 
-                    isCommentActive &&(
-                        <Comments className='hide' postdata={postdata} userdata={userdata}/>
-                    )
-                }
-            </div>
     )
 }
 
