@@ -21,24 +21,23 @@ const Profile = () => {
     if(error) return <h1 className='error'>Something was wrong</h1>
     
     return (
-        <div className="profile">
-            <Nav/>
-            <div className="profileUser">
-                <img src={userEmail.picture} onError={event=>{
-                    event.target.src = perfilDefault
-                    event.onerror = null
-                }} />
-                <div>
-                    <h2> {userEmail.username} </h2>
-                    <p> {userEmail.email} </p>
+            <div className="profile">
+                <Nav/>
+                <div className="profileUser">
+                    <img src={userEmail.picture} onError={event=>{
+                        event.target.src = perfilDefault
+                        event.onerror = null
+                    }} />
+                    <div>
+                        <h2> {userEmail.username} </h2>
+                        <p> {userEmail.email} </p>
+                    </div>
+                </div>
+                <div className="postsUser">
+                    { !email&&<ToPost id={userEmail.userid}/> }
+                    <UserPosts id={userEmail.userid} another={email ? true : false}/>
                 </div>
             </div>
-            <div className="postsUser">
-                { !email&&<ToPost id={userEmail.userid}/> }
-                <UserPosts id={userEmail.userid} another={email ? true : false}/>
-            </div>
-        </div>
-
         )
 }
 

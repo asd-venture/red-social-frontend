@@ -1,15 +1,17 @@
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import { userEmailApi } from '../apis/usersApi'
 import { postLikesApi, createLike, deleteLike } from '../apis/likesApi'
 import Comments from './Comments'
 import '../styles/post.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
-const Post = ({postdata, userdata}) => {
+const Post = ({postdata}) => {
     
     const { user } = useAuth0();
+    const {data: userdata} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
     const {data: like, error, isLoading, refetch} = useQuery(['likesData', postdata.postid], ()=> postLikesApi(postdata.postid))
 
     const [isLikeActive, setIsLikeActive] = useState(false);
@@ -59,8 +61,8 @@ const Post = ({postdata, userdata}) => {
                         </div>
                     </Link>
                     <div className='contentPost'>
-                        {postdata.urlimage && <img src={postdata.urlimage}/>} 
                         {postdata.content && <p>{postdata.content}</p>} 
+                        {postdata.urlimage && <img src={postdata.urlimage}/>} 
                     </div>
                     <div className='LikeComment'>
                         { isLoading&&(

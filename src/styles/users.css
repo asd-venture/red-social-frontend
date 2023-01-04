@@ -8,7 +8,7 @@
 .users{
     grid-area: users;
     height: 85vh;
-    /* width: 50vh; */
+    min-width: 15vh;
     position: -webkit-sticky;
     position: sticky;
     top: 15vh;
@@ -20,11 +20,11 @@
     text-align: center;
     padding: 5vh 1vh;
     margin-top: 2vh;
-    margin-bottom: 5vh;
+    margin-bottom: 2vh;
 }
 
 .other h1{
-    line-height: 2vh;
+    line-height: 5vh;
 }
 
 .boxUsers{
@@ -38,7 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: left;
-    padding: 0 5vh;
+    padding: 0 3vh;
     border-radius: 1%;
 }
 
@@ -70,6 +70,12 @@
 
     .otherUsers:hover{
         background-color: #393939;
+    }
+}
+
+@media screen and (max-width:1850px){
+    .boxUsers{
+        grid-template-columns: auto;
     }
 }
 

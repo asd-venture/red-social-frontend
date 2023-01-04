@@ -18,7 +18,7 @@ const Nav = () => {
                             event.onerror = null
                         }} 
                     />
-                    <p> {user.name} </p>
+                    <p> {user.nickname} </p>
                 </Link>
             </div>
 

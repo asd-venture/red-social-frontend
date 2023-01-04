@@ -1,6 +1,8 @@
 .postBox{
     margin-bottom: 3rem;
     border-bottom: 1px solid rgba(217, 217, 217, 0.448);
+    display: grid;
+    justify-content: center;
 }
 
 .userPost{
@@ -19,7 +21,7 @@
 
 .nameEmail{
     display: grid;
-    padding: 0em 1em;
+    padding: 0 1em;
 }
 
 .name{
@@ -33,20 +35,23 @@
 }
 
 .contentPost{
-    border: 1px solid rgba(128, 128, 128, 0.253);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 5vh;
+    width: 60vh;
 }
 
 .contentPost img{
     text-align: center;
-    width: 45vh;
+    width: 100%;
+    padding: 7%;
+    margin: 1%;
+    border: 1px solid rgba(128, 128, 128, 0.253);
+    border-radius: 2em;
 }
 
 .contentPost p{
-    padding: 7vh 3vh;
+    padding: 1vh 2vh;
 }
 
 .LikeComment{
@@ -56,6 +61,7 @@
 }
 
 .LikeComment button{
+    width: 15vh;
     cursor: pointer;
     text-decoration: none;
     outline: none;
@@ -116,17 +122,22 @@
     .contentPost{
         padding: 3vh;
         font-size: 1.8vh;
-        display: flex;
+        flex-direction: column-reverse;
+        gap: 2vh;
+    }
+
+    .contentPost img{
+        width: 100%;
+        border-radius: 2em;
     }
 
     .contentPost p{
-        text-align: center;
-        padding: 0;
+        padding: 1vh;
     }
 
     .LikeComment{
-        display: grid;
-        row-gap: 1vh;
+        justify-content: space-around;
+        padding: 1vh;
     }
 
     .buttonComment{
