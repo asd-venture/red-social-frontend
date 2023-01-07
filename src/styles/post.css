@@ -1,4 +1,5 @@
 .postBox{
+    padding: 2vh;
     margin-bottom: 3rem;
     border-bottom: 1px solid rgba(217, 217, 217, 0.448);
     display: grid;
@@ -35,23 +36,25 @@
 }
 
 .contentPost{
+    width: 60vh;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    width: 60vh;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.253);
 }
 
 .contentPost img{
     text-align: center;
     width: 100%;
-    padding: 7%;
-    margin: 1%;
-    border: 1px solid rgba(128, 128, 128, 0.253);
-    border-radius: 2em;
+    padding-bottom: 3%;
 }
 
 .contentPost p{
-    padding: 1vh 2vh;
+    width: 100%;
+    padding: 6%;
+    display: flex;
+    align-items: center;
 }
 
 .LikeComment{
@@ -102,7 +105,7 @@
     .like:hover{
         background: #393939;
     }
-    
+
     .likeActive{
         color: #f14040;
     }
@@ -117,26 +120,19 @@
 
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:1000px){
+    
+    .postBox{
+        display: block;
+        padding: 0;
+    }
 
     .contentPost{
-        padding: 3vh;
-        font-size: 1.8vh;
-        flex-direction: column-reverse;
-        gap: 2vh;
-    }
-
-    .contentPost img{
         width: 100%;
-        border-radius: 2em;
-    }
-
-    .contentPost p{
-        padding: 1vh;
+        font-size: 1.8vh;
     }
 
     .LikeComment{
-        justify-content: space-around;
         padding: 1vh;
     }
 
@@ -147,4 +143,5 @@
     .like, .likeActive, .buttonComment{
         font-size: 1.6vh;
     }
+    
 }

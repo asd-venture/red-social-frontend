@@ -41,15 +41,20 @@ const ToPost = ({id}) => {
         <div className='toPost'>
             <h1> Make A Post!</h1>
             <form action='/home' onSubmit={sendData}>
-                <input type="file" name='image' accept='image/jpeg' onChange={upload}/>
-                <input type="text" name='content' placeholder='Write something' onChange={handleSubmit}/>
+                <textarea name='content' placeholder='Write something' onChange={handleSubmit}/>
                 {image&&
                     <div className='imageToPost'>
                         <img src={image} alt={image}/>
                     </div>
                 }
                 <br />
-                <button> Post </button>
+                <div className='photoFile'>
+                    <label for='image' className='file'> 
+                        Photo
+                        <input type="file" name='image' id='image' accept='image/jpeg, image/jpg, image/png' onChange={upload}/>
+                    </label>
+                    <button> Post </button>
+                </div>
             </form>
         </div>
     )

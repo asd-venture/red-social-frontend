@@ -16,7 +16,30 @@
     display: grid;
 }
 
-.toPost form input{
+.photoFile{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.file{
+    background-color: azure;
+    font-size: 2.5vh;
+    padding: 2vh 3vh;
+    cursor: pointer;
+    font-weight: bolder;
+    border-radius: 8px;
+}
+
+.file:hover{
+    background-color: #646cff;
+}
+
+.file input{
+    display: none;
+}
+
+.toPost form textarea{
     width: 100%;
     font-size: 2vh;
     padding: 1.5vh;
@@ -24,16 +47,16 @@
 }
 
 .imageToPost{
-    height: 30vh;
+    text-align: center;
 }
 
 .imageToPost img{
-    height: 100%;
-    /* width: 100%; */
+    max-width: 60vh;
+    width: 100%;
+    padding: 3% 0;
 }
 
 .toPost form button {
-    justify-self: right;
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 2vh 3vh;
@@ -59,15 +82,15 @@
         border: 1px solid rgba(128, 128, 128, 0.253);
     }
 
-    .toPost h1{
+    .toPost h1, .file{
         color: white;
     }
 
-    .toPost form button{
+    .toPost form button, .file{
         background-color: #1a1a1a;
     }
 
-    .toPost form button:hover {
+    .toPost form button:hover, .file:hover{
         background-color: #cf3939;
     }
     .toPost form button:focus,
@@ -76,9 +99,16 @@
     }
 }
 
-@media screen and (max-width:1000px){
+@media screen and (max-width:800px){
+
     .toPost{
         margin: 0;
         border-radius: 0;
     }
+
+    .imageToPost img{
+        max-width: 100%;
+        padding: 1%;
+    }
+
 }
