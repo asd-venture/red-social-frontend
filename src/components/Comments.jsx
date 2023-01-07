@@ -7,9 +7,10 @@ import Load from './Load'
 import '../styles/comments.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
-const Comments = ({postdata, userdata}) => {
+const Comments = ({postdata}) => {
 
   const { user } = useAuth0();
+  const {data: userdata} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
   const {data: comments, error, isLoading, refetch} = useQuery(['commentsPostData', postdata.postid], ()=>commentsPostApi(postdata.postid));
 
   const [datos, setDatos] = useState({
@@ -56,7 +57,7 @@ return (
                 event.onerror = null
               }}/>
               <div>
-                <h5> {lastComments.username} </h5>
+                <h5 className={postdata.email == user.email ? '':'logUser'}> {lastComments.username} </h5>
                 <p> {lastComments.nota} </p>
               </div>
 

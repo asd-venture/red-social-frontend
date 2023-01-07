@@ -35,6 +35,10 @@
     font-size: 1.4vh;
 }
 
+.logUser{
+    text-decoration: underline;
+}
+
 .contentPost{
     width: 60vh;
     display: flex;

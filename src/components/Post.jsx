@@ -8,7 +8,7 @@ import Comments from './Comments'
 import '../styles/post.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
-const Post = ({postdata}) => {
+const Post = ({postdata, deletePost}) => {
     
     const { user } = useAuth0();
     const {data: userdata} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
@@ -56,8 +56,8 @@ const Post = ({postdata}) => {
                             }}/>
         
                         <div className='nameEmail'>
-                            <p className='name' >{postdata.username}</p>
-                            <p className='email'>{postdata.email}</p>
+                            <p className={postdata.email == user.email ?'name logUser': 'name'} >{postdata.username}</p>
+                            <p className={postdata.email == user.email ?'email logUser': 'email'}>{postdata.email}</p>
                         </div>
                     </Link>
                     <div className='contentPost'>
@@ -81,7 +81,7 @@ const Post = ({postdata}) => {
                     </div>
                     { 
                         isCommentActive &&(
-                            <Comments className='hide' postdata={postdata} userdata={userdata}/>
+                            <Comments className='hide' postdata={postdata}/>
                         )
                     }
                 </div>

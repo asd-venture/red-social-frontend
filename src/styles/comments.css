@@ -52,6 +52,10 @@
     color: black;
 }
 
+.logUser{
+    text-decoration: underline;
+}
+
 .commentsLoad{
     display: flex;
     justify-content: center; 
@@ -71,7 +75,7 @@
 
 .comment div{
     padding: 1vh;
-    margin-left: 1vh;
+    margin-left: 2vh;
     border-radius: 2vh;
 }    
 

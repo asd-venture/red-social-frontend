@@ -38,7 +38,7 @@ const UserPosts = ({id, another}) => {
           loader={<PostsLoading/>}
         >
         { postsUser.map(lastPosts=>(
-            <Post key={lastPosts.postid} postdata={lastPosts} userdata={userEmail}/>
+            <Post key={lastPosts.postid} postdata={lastPosts} deletePost={true}/>
           ))
         }
         </InfiniteScroll>

@@ -24,7 +24,7 @@ export const postsUserApi = async (id, load)=>{
         return response.data
     } catch (error) {
         console.log(error);
-        throw new Error('Erro al cargar las peticiones');
+        throw new Error('Error al cargar las peticiones');
     }
 }
 
@@ -34,5 +34,15 @@ export const createPost = async (body)=>{
         return response.data
     } catch (error) {
         throw new Error('Error al crear una publicacion');
+    }
+}
+
+export const deletePost = async (id)=>{
+    try {
+        const response = await instance.delete(`/posts/${id}`);
+        return response.data
+    } catch (error) {
+        console.log(error);
+        throw new Error('Error al eliminar el post');
     }
 }
