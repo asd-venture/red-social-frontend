@@ -21,6 +21,7 @@ const Index = () => {
                 {isActive &&(
                     <div className='aceptTerms'>
                         <Terms/>
+                        <button onClick={handleClick}> {isActive ? 'return':'Continue'} </button>
                     </div>
                 )}
             </div>

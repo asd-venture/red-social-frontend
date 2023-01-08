@@ -7,7 +7,6 @@
 
 .image{
     height: 84vh;
-    margin: 0 4vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -42,10 +41,9 @@
     padding: 5vh;
     border: 1px solid rgba(128, 128, 128, 0.164);
     border-radius: 0;
-    transition: width 1s ease-in;
 }
 
-.image button, .onlyImage button{
+.image button, .onlyImage button, .aceptTerms button{
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 2vh 3vh;
@@ -58,12 +56,16 @@
     transition: border-color 0.25s;
 }
   
-.image button:hover, .onlyImage button:hover{
+.image button:hover, .onlyImage button:hover, .aceptTerms button:hover{
     background-color: #646cff;
 }
-.image button:focus, .onlyImage button:focus,
-.image button:focus-visible, .onlyImage button:focus-visible {
+.image button:focus, .onlyImage button:focus, .aceptTerms button:focus,
+.image button:focus-visible, .onlyImage button:focus-visible, .aceptTerms button:focus-visible {
     outline: none;
+}
+
+.aceptTerms > button{
+    display: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,15 +81,15 @@
         color: white;
     }
 
-    .image button, .onlyImage button{
+    .image button, .onlyImage button, .aceptTerms button{
         background-color: #1a1a1a;
     }
     
-    .image button:hover, .onlyImage button:hover{
+    .image button:hover, .onlyImage button:hover, .aceptTerms button:hover{
         background-color: #cf3939;
     }
-    .image button:focus, .onlyImage button:focus,
-    .image button:focus-visible, .onlyImage button:focus-visible{
+    .image button:focus, .onlyImage button:focus, .aceptTerms button:focus,
+    .image button:focus-visible, .onlyImage button:focus-visible, .aceptTerms button:focus-visible{
         outline: none;
     }
 }
@@ -95,8 +97,13 @@
 @media screen and (max-width:700px){
 
     .index{
-        padding: 4vh;
+        padding: 2vh;
         display: grid;
+        grid-template-rows: auto auto;
+    }
+
+    .image{
+        display: none;
     }
 
     .onlyImage{
@@ -109,7 +116,18 @@
     }
 
     .image h1{
-        margin-top: 0;
+        margin-top: 5vh;
+    }
+
+    .aceptTerms{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .aceptTerms > button{
+        display: block;
     }
 
 }
