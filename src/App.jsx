@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Index from './pages'
+import Index from './pages/Index'
 import Home from './pages/Home'
 import Load from './components/Load'
 import Profile from './pages/Profile'
