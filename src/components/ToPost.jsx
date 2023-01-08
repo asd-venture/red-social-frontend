@@ -6,7 +6,7 @@ const ToPost = ({id}) => {
     
     // Expresion regular para limitar los caracteres de lo usuarios
     const expresiones = {
-        content: /^[a-zA-ZÀ-ÿ0-9\_\-]{1,500}$/ // letras, numero, guion y guion bajo
+        content: /^[a-zA-ZÀ-ÿ0-9\s\_\-\;\,\.\:\?\¿\!\¡]{1,500}$/ // letras, numero, guion, guion bajo y demas caracteres
     }
 
     const [buttonDisabled, setbuttonDisabled] = useState(true)
@@ -28,18 +28,26 @@ const ToPost = ({id}) => {
                 [event.target.name] : event.target.value
             })
         }else{
-            setbuttonDisabled(true)
+            if(event.target.value == '' && image){
+                setbuttonDisabled(false)
+            }else{
+                setbuttonDisabled(true)
+            }
         }
     }
 
     // enviando los datos al servidor 
     const sendData = async event=>{ 
-        let formData = new FormData()
-        formData.append('content', datos.content)
-        formData.append('useridpost', datos.useridpost)
-        formData.append('image', datos.image)
-        createPost(formData)
-        event.target.reset()
+        if (!buttonDisabled) {
+            let formData = new FormData()
+            formData.append('content', datos.content)
+            formData.append('useridpost', datos.useridpost)
+            formData.append('image', datos.image)
+            createPost(formData)
+            event.target.reset()
+        }else{
+            alert('Caracteres no permitidos')
+        }
     }
 
     // obteniendo las imagenes
@@ -57,7 +65,7 @@ const ToPost = ({id}) => {
         <div className='toPost'>
             <h1> Make A Post!</h1>
             <form action='/home' onSubmit={sendData}>
-                <textarea name='content' placeholder='Write something' onChange={handleSubmit}/>
+                <textarea className={buttonDisabled ? 'contentError':''} name='content' placeholder='Write something' onChange={handleSubmit}/>
                 {image&&
                     <div className='imageToPost'>
                         <img src={image} alt={image}/>

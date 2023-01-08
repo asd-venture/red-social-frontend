@@ -16,6 +16,11 @@
     display: grid;
 }
 
+.contentError{
+    color: rgb(195, 46, 46);
+    font-weight: bolder;
+}
+
 .photoFile{
     display: flex;
     justify-content: space-between;
@@ -97,6 +102,7 @@
     button:focus-visible {
         outline: none;
     }
+    
 }
 
 @media screen and (max-width:800px){

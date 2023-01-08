@@ -11,10 +11,15 @@
 
 .comments form input{
     width: 100%;
-    font-size: 1.3vh;
-    padding: 1.2vh;
+    font-size: 1.5vh;
+    padding: 1.7vh;
     margin: 0.5vh;
     border-radius: 1vh;
+}
+
+.notaError{
+    color: rgb(195, 46, 46);
+    font-weight: bolder;
 }
 
 .comments form button {

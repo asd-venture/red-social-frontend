@@ -20,7 +20,7 @@ const Posts = () => {
   const posts = postsData?.pages.reduce((prevPosts, page)=>prevPosts.concat(page.results), []) ?? [];
 
   if(!isLoading && posts.length===0){
-    return <h1> nada </h1>;
+    return <h1 className='noContent'> no content </h1>;
   }
 
   if(error) return <h1 className='error'>Something was wrong</h1>

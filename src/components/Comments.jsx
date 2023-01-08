@@ -13,6 +13,13 @@ const Comments = ({postdata}) => {
   const {data: userdata} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
   const {data: comments, error, isLoading, refetch} = useQuery(['commentsPostData', postdata.postid], ()=>commentsPostApi(postdata.postid));
 
+  // Expresion regular para limitar los caracteres de lo usuarios
+  const expresiones = {
+    content: /^[a-zA-ZÀ-ÿ0-9\s\_\-\;\,\.\:\?\¿\!\¡]{1,500}$/ // letras, numero, guion y guion bajo
+  }
+
+  const [buttonDisabled, setbuttonDisabled] = useState(true)
+
   const [datos, setDatos] = useState({
     nota: '',
     useridcomment: userdata.userid,
@@ -20,18 +27,25 @@ const Comments = ({postdata}) => {
   })
 
   const handleSubmit = event=>{
+    if (expresiones.content.test(event.target.value)) { // Comprobando los caracteres del input 
+      setbuttonDisabled(false)
       setDatos({
           ...datos,
           [event.target.name] : event.target.value
       })
+    }else{
+      setbuttonDisabled(true)
+    }
   }
 
   const sendData = async event=>{
     event.preventDefault()
-
-    createComment(datos).then(response=>refetch())
-
-    event.target.reset()
+    if (!buttonDisabled) {
+      createComment(datos).then(response=>refetch())
+      event.target.reset()
+    } else{
+      alert('Caracteres no permitidos')
+    }
 }
 
 if(error) return <h1 className='error'>Something was wrong</h1>
@@ -41,8 +55,8 @@ return (
     <div className='comments'>
       <h4> Comments </h4>
       <form onSubmit={sendData}>
-        <input type="text" name='nota' placeholder='Comment something' onChange={handleSubmit}/>
-        <button> Post </button>
+        <input type="text" className={buttonDisabled?'notaError':''} name='nota' placeholder='Comment something' onChange={handleSubmit}/>
+        <button disabled={buttonDisabled}> Post </button>
       </form>
 
       <div className='boxComments'>
