@@ -1,8 +1,14 @@
 .error{
+    height: 100vh;
     display: flex;
-    align-self: center;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     padding: 10vh;
+}
+
+.error img{
+    width: 50%;
 }
 
 @media (prefers-color-scheme: dark) {
