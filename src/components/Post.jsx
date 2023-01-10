@@ -29,6 +29,7 @@ const Post = ({postdata, activeDeletePost}) => {
 
     const postDelete = ()=>{
         deletePost(postdata.postid).then(response=>refetch())
+        window.location.reload()
     }
 
     const deleteLikeUser = ()=>{
@@ -67,11 +68,9 @@ const Post = ({postdata, activeDeletePost}) => {
                                 <p className={postdata.email == user.email ?'email logUser': 'email'}>{postdata.email}</p>
                             </div>
                         </Link>
-                        {/* <div>
-                            <p>{posttime[0]}</p>
-                            <p>{posttime[1]}</p>
-                        </div> */}
+
                         {buttonDelete ? <div className='boxDeletePost'> <button className='buttonDeletePost' onClick={postDelete}> delete </button> </div> : null }
+                        
                         {activeDeletePost && <p className='deletePost' onClick={()=>{setButtonDelete(current => !current)}}> ... </p> }
                     </div>
                     <div className='contentPost'>
