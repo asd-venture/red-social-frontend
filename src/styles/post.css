@@ -6,6 +6,13 @@
     justify-content: center;
 }
 
+
+.boxUserPost{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0;
+}
+
 .userPost{
     display: flex;
 }
@@ -37,6 +44,32 @@
 
 .logUser{
     text-decoration: underline;
+}
+
+.boxDeletePost{
+    display: flex;
+    align-items: center;
+}
+
+.buttonDeletePost{
+    height: 50%;
+    padding: 1vh;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}
+
+.buttonDeletePost:hover{
+    background: rgb(215, 215, 215);
+}
+
+.deletePost{
+    cursor: pointer;
+    margin-right: 4vh;
+    transform: rotate(90deg);
 }
 
 .contentPost{
@@ -106,7 +139,7 @@
         color: white;
     }
 
-    .like:hover{
+    .like:hover, .buttonDeletePost:hover{
         background: #393939;
     }
 

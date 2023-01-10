@@ -9,13 +9,14 @@ import '../styles/post.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
 const Post = ({postdata, deletePost}) => {
-    
+
     const { user } = useAuth0();
     const {data: userdata} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
     const {data: like, error, isLoading, refetch} = useQuery(['likesData', postdata.postid], ()=> postLikesApi(postdata.postid))
 
     const [isLikeActive, setIsLikeActive] = useState(false);
     const [isCommentActive, setIsCommentActive] = useState(false);
+    const [buttonDelete, setButtonDelete] = useState(false)
 
     const addData = ()=>{
         const body = {
@@ -29,13 +30,13 @@ const Post = ({postdata, deletePost}) => {
         const currentLike = like.find(l=>l.email == user.email)
         deleteLike(currentLike.likeid).then(reponse=>refetch())
     }
-    
-    const handleClickLike = ()=>{        
+
+    const handleClickLike = ()=>{
         setIsLikeActive(current => !current)
         isLikeActive ? deleteLikeUser() : addData()
     }
 
-    const handleClickComment = ()=>{        
+    const handleClickComment = ()=>{
         setIsCommentActive(current => !current)
     }
 
@@ -49,20 +50,28 @@ const Post = ({postdata, deletePost}) => {
 
     return (postdata &&
                 <div className='postBox'>
-                    <Link to={postdata.email == user.email ? '/profile' : '/profile/'+postdata.email} className='userPost'>
-                        <img src={postdata.picture} onError={event=>{
+                    <div className='boxUserPost'>
+                        <Link to={postdata.email == user.email ? '/profile' : '/profile/'+postdata.email} className='userPost'>
+                            <img src={postdata.picture} onError={event=>{
                                 event.target.src = perfilDefault
-                                event.onerror = null
-                            }}/>
-        
-                        <div className='nameEmail'>
-                            <p className={postdata.email == user.email ?'name logUser': 'name'} >{postdata.username}</p>
-                            <p className={postdata.email == user.email ?'email logUser': 'email'}>{postdata.email}</p>
-                        </div>
-                    </Link>
+                                    event.onerror = null
+                                }}/>
+
+                            <div className='nameEmail'>
+                                <p className={postdata.email == user.email ?'name logUser': 'name'} >{postdata.username}</p>
+                                <p className={postdata.email == user.email ?'email logUser': 'email'}>{postdata.email}</p>
+                            </div>
+                        </Link>
+                        {/* <div>
+                            <p>{posttime[0]}</p>
+                            <p>{posttime[1]}</p>
+                        </div> */}
+                        {buttonDelete ? <div className='boxDeletePost'> <button className='buttonDeletePost'> delete </button> </div> : null }
+                        {deletePost && <p className='deletePost' onClick={()=>{setButtonDelete(current => !current)}}> ... </p> }
+                    </div>
                     <div className='contentPost'>
-                        {postdata.content && <p>{postdata.content}</p>} 
-                        {postdata.urlimage && <img src={postdata.urlimage}/>} 
+                        {postdata.content && <p>{postdata.content}</p>}
+                        {postdata.urlimage && <img src={postdata.urlimage}/>}
                     </div>
                     <div className='LikeComment'>
                         { isLoading&&(
@@ -72,14 +81,14 @@ const Post = ({postdata, deletePost}) => {
                             <button className='likeDesactive' disabled={true}> Like </button>
                         )}
                         { like&&(
-                            <button className={ isLikeActive ? 'likeActive' : 'like'} 
+                            <button className={ isLikeActive ? 'likeActive' : 'like'}
                                 onClick={handleClickLike}
-                            >Like { like && <pre> {Object.keys(like).length} </pre> } </button> 
-                            
+                            >Like { like && <pre> {Object.keys(like).length} </pre> } </button>
+
                         )}
                         <button className='buttonComment' onClick={handleClickComment}>Comment</button>
                     </div>
-                    { 
+                    {
                         isCommentActive &&(
                             <Comments className='hide' postdata={postdata}/>
                         )
