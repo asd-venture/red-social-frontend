@@ -3,12 +3,13 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { userEmailApi } from '../apis/usersApi'
+import { deletePost } from '../apis/postsApi'
 import { postLikesApi, createLike, deleteLike } from '../apis/likesApi'
 import Comments from './Comments'
 import '../styles/post.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
-const Post = ({postdata, deletePost}) => {
+const Post = ({postdata, activeDeletePost}) => {
 
     const { user } = useAuth0();
     const {data: userdata} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
@@ -24,6 +25,10 @@ const Post = ({postdata, deletePost}) => {
             postidlike: postdata.postid
         }
         createLike(body).then(response=>refetch())
+    }
+
+    const postDelete = ()=>{
+        deletePost(postdata.postid).then(response=>refetch())
     }
 
     const deleteLikeUser = ()=>{
@@ -66,8 +71,8 @@ const Post = ({postdata, deletePost}) => {
                             <p>{posttime[0]}</p>
                             <p>{posttime[1]}</p>
                         </div> */}
-                        {buttonDelete ? <div className='boxDeletePost'> <button className='buttonDeletePost'> delete </button> </div> : null }
-                        {deletePost && <p className='deletePost' onClick={()=>{setButtonDelete(current => !current)}}> ... </p> }
+                        {buttonDelete ? <div className='boxDeletePost'> <button className='buttonDeletePost' onClick={postDelete}> delete </button> </div> : null }
+                        {activeDeletePost && <p className='deletePost' onClick={()=>{setButtonDelete(current => !current)}}> ... </p> }
                     </div>
                     <div className='contentPost'>
                         {postdata.content && <p>{postdata.content}</p>}

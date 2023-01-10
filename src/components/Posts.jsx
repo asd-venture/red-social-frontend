@@ -35,7 +35,7 @@ const Posts = () => {
       >
         { posts.map(lastPosts=>(
             <div key={lastPosts.postid}>
-              <Post postdata={lastPosts} deletePost={false}/>
+              <Post postdata={lastPosts} activeDeletePost={false}/>
             </div>
           ))
         }

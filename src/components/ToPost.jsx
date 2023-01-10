@@ -75,7 +75,7 @@ const ToPost = ({id}) => {
                 <div className='photoFile'>
                     <label for='image' className='file'> 
                         Photo
-                        <input type="file" name='image' id='image' accept='image/jpeg, image/jpg, image/png' onChange={upload}/>
+                        <input type="file" name='image' id='image' accept='image/*' onChange={upload}/>
                     </label>
                     <button disabled={buttonDisabled}> Post </button>
                 </div>
