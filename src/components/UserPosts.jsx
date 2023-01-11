@@ -1,7 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { useQuery, useInfiniteQuery } from 'react-query'
+import { useInfiniteQuery } from 'react-query'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { userEmailApi } from '../apis/usersApi'
 import { postsUserApi } from '../apis/postsApi'
 import Post from './Post'
 import PostsLoading from './PostsLoading'
@@ -10,7 +9,6 @@ import '../styles/userPosts.css'
 const UserPosts = ({id, another}) => {
 
   const { user } = useAuth0();
-  const {data: userEmail} = useQuery(['userEmailData', user.email], ()=>userEmailApi(user.email));
   const {data: postsUserData, error, isLoading, hasNextPage, fetchNextPage} = useInfiniteQuery(['postsUserInfinite', id],
   ({pageParam=1})=>postsUserApi(id, pageParam),
     {
@@ -38,7 +36,7 @@ const UserPosts = ({id, another}) => {
           loader={<PostsLoading/>}
         >
         { postsUser.map(lastPosts=>(
-            <Post key={lastPosts.postid} postdata={lastPosts} activeDeletePost={true}/>
+            <Post key={lastPosts.postid} postdata={lastPosts} activeDeletePost={user.nickname==lastPosts.username?true:false}/>
           ))
         }
         </InfiniteScroll>
