@@ -46,7 +46,7 @@ const ToPost = ({id}) => {
             createPost(formData)
             event.target.reset()
         }else{
-            alert('Caracteres no permitidos')
+            alert('disallowed characters')
         }
     }
 

@@ -49,6 +49,7 @@
 .boxDeletePost{
     display: flex;
     align-items: center;
+    border-radius: 0;background: transparent;
 }
 
 .buttonDeletePost{
