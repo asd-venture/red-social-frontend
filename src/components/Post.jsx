@@ -28,8 +28,10 @@ const Post = ({postdata, activeDeletePost}) => {
     }
 
     const postDelete = ()=>{
-        deletePost(postdata.postid).then(response=>refetch())
-        window.location.reload()
+        deletePost(postdata.postid).then(response=>{
+            refetch()
+            window.location.reload()
+        })
     }
 
     const deleteLikeUser = ()=>{

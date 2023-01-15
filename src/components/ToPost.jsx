@@ -37,14 +37,17 @@ const ToPost = ({id}) => {
     }
 
     // enviando los datos al servidor 
-    const sendData = async event=>{ 
+    const sendData = async event=>{
+        event.preventDefault()
         if (!buttonDisabled) {
             let formData = new FormData()
             formData.append('content', datos.content)
             formData.append('useridpost', datos.useridpost)
             formData.append('image', datos.image)
-            createPost(formData)
-            event.target.reset()
+            createPost(formData).then(response=>{
+                event.target.reset()
+                window.location.href=import.meta.env.VITE_URL_DOMAIN+'/home'
+            })
         }else{
             alert('disallowed characters')
         }
@@ -64,7 +67,7 @@ const ToPost = ({id}) => {
     return (
         <div className='toPost'>
             <h1> Make A Post!</h1>
-            <form action='/home' onSubmit={sendData}>
+            <form onSubmit={sendData}>
                 <textarea className={buttonDisabled ? 'contentError':''} name='content' placeholder='Write something' onChange={handleSubmit}/>
                 {image&&
                     <div className='imageToPost'>
