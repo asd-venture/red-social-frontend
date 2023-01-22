@@ -32,6 +32,10 @@ const ToPost = ({id}) => {
         }else{
             if(event.target.value == '' && image){
                 setbuttonDisabled(false)
+                setDatos({
+                    ...datos,
+                    [event.target.name] : event.target.value
+                })
             }else{
                 setbuttonDisabled(true)
             }
