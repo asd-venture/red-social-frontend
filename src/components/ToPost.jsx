@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import { createPost } from '../apis/postsApi'
+import Load from './Load'
 import '../styles/toPost.css'
 
 const ToPost = ({id}) => {
     
     // Expresion regular para limitar los caracteres de lo usuarios
     const expresiones = {
-        content: /^[a-zA-ZÀ-ÿ0-9\s\_\-\;\,\.\:\?\¿\!\¡]{1,500}$/ // letras, numero, guion, guion bajo y demas caracteres
+        content: /^[\S\s]{1,500}$/ // letras, numero, guion, guion bajo y demas caracteres
     }
 
+    const [loadingToPost, setLoadingToPost] = useState(false)
     const [buttonDisabled, setbuttonDisabled] = useState(true)
 
     const [datos, setDatos] = useState({ // Datos del usuario para postear
@@ -40,6 +42,8 @@ const ToPost = ({id}) => {
     const sendData = async event=>{
         event.preventDefault()
         if (!buttonDisabled) {
+            setLoadingToPost(true)
+            setbuttonDisabled(true)
             let formData = new FormData()
             formData.append('content', datos.content)
             formData.append('useridpost', datos.useridpost)
@@ -68,7 +72,7 @@ const ToPost = ({id}) => {
         <div className='toPost'>
             <h1> Make A Post!</h1>
             <form onSubmit={sendData}>
-                <textarea className={buttonDisabled ? 'contentError':''} name='content' placeholder='Write something' onChange={handleSubmit}/>
+                <textarea className={buttonDisabled ? 'contentError':''} name='content' placeholder='Write something' disabled={loadingToPost} onChange={handleSubmit}/>
                 {image&&
                     <div className='imageToPost'>
                         <img src={image} alt={image}/>
@@ -76,10 +80,12 @@ const ToPost = ({id}) => {
                 }
                 <br />
                 <div className='photoFile'>
-                    <label for='image' className='file'> 
+                    <label for='image' className={loadingToPost ? 'fileDesactive':'file'}> 
                         Photo
-                        <input type="file" name='image' id='image' accept='image/*' onChange={upload}/>
+                        <input type="file" name='image' id='image' accept='image/*' disabled={loadingToPost} onChange={upload}/>
                     </label>
+                    { loadingToPost && <div><Load/></div> } 
+                        
                     <button disabled={buttonDisabled}> Post </button>
                 </div>
             </form>

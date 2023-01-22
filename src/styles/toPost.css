@@ -27,7 +27,7 @@
     flex-wrap: wrap;
 }
 
-.file{
+.file, .fileDesactive{
     background-color: azure;
     font-size: 2.5vh;
     padding: 2vh 3vh;
@@ -36,12 +36,16 @@
     border-radius: 8px;
 }
 
-.file:hover{
+.file:hover, .fileDesactive:hover{
     background-color: #646cff;
 }
 
-.file input{
+.file input, .fileDesactive input{
     display: none;
+}
+
+.fileDesactive{
+    color: rgb(105, 105, 105);
 }
 
 .toPost form textarea{
@@ -91,7 +95,7 @@
         color: white;
     }
 
-    .toPost form button, .file{
+    .toPost form button, .file, .fileDesactive{
         background-color: #1a1a1a;
     }
 
