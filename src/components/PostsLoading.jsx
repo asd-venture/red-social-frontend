@@ -1,19 +1,20 @@
 import React from 'react'
-import '../styles/posts.css'
 import '../styles/post.css'
 
 const PostsLoading = () => {
   return (
-    <div className='postsLoad'> 
-      <div className='postsLoading'> 
-        <div>
-          <div className='userPost'>
-            <div className='nameEmail'></div>
-          </div>
-          <p className='contentPost'></p>
-          <div className='LikeComment'></div>
+    <div className='postBox'> 
+      <div className='boxUserPost boxUserPostLoading'> 
+        <div className='userPost'>
+            <div></div>
+            <div className='nameEmail'>
+                <p className='name'></p>
+                <p className='email'></p>
+            </div>
         </div>
       </div> 
+      <div className='contentPost contentPostLoading'></div>
+      <div className='LikeComment LikeCommentLoading'></div>
     </div>
   )
 }

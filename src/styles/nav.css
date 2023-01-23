@@ -1,6 +1,7 @@
 nav{
     grid-area: nav;
     background-color: rgb(233, 233, 233);
+    z-index: 100;
     position: -webkit-sticky;
     position: sticky;
     top: 0;

@@ -13,6 +13,16 @@
     border-radius: 0;
 }
 
+.boxUserPostLoading{
+    height: 7vh;
+    width: 100%;
+}
+
+.boxUserPostLoading > .userPost{
+    height: 7vh;
+    width: 100%;
+}
+
 .userPost{
     display: flex;
 }
@@ -82,6 +92,10 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.253);
 }
 
+.contentPostLoading{
+    height: 30vh;
+}
+
 .contentPost img{
     text-align: center;
     width: 100%;
@@ -99,6 +113,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.LikeCommentLoading{
+    height: 5vh;
 }
 
 .LikeComment button{
