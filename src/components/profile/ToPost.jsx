@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { createPost } from '../apis/postsApi'
-import Load from './Load'
-import '../styles/toPost.css'
+import { createPost } from '../../apis/postsApi'
+import Load from '../Load'
+import '../../styles/profile/toPost.css'
 
 const ToPost = ({id}) => {
     

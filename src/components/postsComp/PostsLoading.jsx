@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/post.css'
+import '../../styles/postsComp/post.css'
 
 const PostsLoading = () => {
   return (

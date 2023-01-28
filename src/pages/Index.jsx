@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Terms from '../components/Terms'
-import '../styles/index.css'
+import '../styles/index/index.css'
 import Logo from '/logoBrain.png'
 
 const Index = () => {

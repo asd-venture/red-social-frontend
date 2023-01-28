@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/newPost.css'
+import '../../styles/home/newPost.css'
 import { Link } from "react-router-dom"
 
 const NewPost = () => {

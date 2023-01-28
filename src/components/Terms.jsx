@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import '../styles/terms.css'
-import LoginButton from '../components/LoginButton'
+import LoginButton from '../components/buttons/LoginButton'
+import '../styles/index/terms.css'
 
 const Terminos = () => {
 

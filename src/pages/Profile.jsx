@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom"
 import { useQuery } from 'react-query'
 import { userEmailApi } from '../apis/usersApi'
 import Nav from '../components/Nav'
-import UserPosts from '../components/UserPosts'
-import ToPost from '../components/ToPost'
+import UserPosts from '../components/profile/UserPosts'
+import ToPost from '../components/profile/ToPost'
 import Load from '../components/Load'
-import '../styles/profile.css'
+import '../styles/profile/profile.css'
 import perfilDefault from '../assets/perfilDefault.webp'
 
 const Profile = () => {

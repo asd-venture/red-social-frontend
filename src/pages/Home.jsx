@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { createUser } from '../apis/usersApi'
 import Nav from '../components/Nav'
-import Users from '../components/Users'
-import NewPost from '../components/NewPost'
-import Posts from '../components/Posts'
-import '../styles/home.css'
+import Users from '../components/home/Users'
+import NewPost from '../components/home/NewPost'
+import Posts from '../components/home/Posts'
+import '../styles/home/home.css'
 
 const Home = () => {
 

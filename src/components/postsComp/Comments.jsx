@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import { commentsPostApi, createComment } from '../apis/commentsApi'
-import Load from './Load'
-import '../styles/comments.css'
-import perfilDefault from '../assets/perfilDefault.webp'
+import { commentsPostApi, createComment } from '../../apis/commentsApi'
+import Load from '../Load'
+import '../../styles/postsComp/comments.css'
+import perfilDefault from '../../assets/perfilDefault.webp'
 
 const Comments = ({postdata}) => {
 

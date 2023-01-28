@@ -1,10 +1,10 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useInfiniteQuery } from 'react-query'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { postsUserApi } from '../apis/postsApi'
-import Post from './Post'
-import PostsLoading from './PostsLoading'
-import '../styles/userPosts.css'
+import { postsUserApi } from '../../apis/postsApi'
+import Post from '../postsComp/Post'
+import PostsLoading from '../postsComp/PostsLoading'
+import '../../styles/profile/userPosts.css'
 
 const UserPosts = ({id, another}) => {
 

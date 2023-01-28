@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import { userEmailApi } from '../apis/usersApi'
-import { deletePost } from '../apis/postsApi'
-import { postLikesApi, createLike, deleteLike } from '../apis/likesApi'
+import { userEmailApi } from '../../apis/usersApi'
+import { deletePost } from '../../apis/postsApi'
+import { postLikesApi, createLike, deleteLike } from '../../apis/likesApi'
 import Comments from './Comments'
-import '../styles/post.css'
-import perfilDefault from '../assets/perfilDefault.webp'
+import Load from '../Load'
+import '../../styles/postsComp/post.css'
+import perfilDefault from '../../assets/perfilDefault.webp'
 
 const Post = ({postdata, activeDeletePost}) => {
 
@@ -17,7 +18,8 @@ const Post = ({postdata, activeDeletePost}) => {
 
     const [isLikeActive, setIsLikeActive] = useState(false);
     const [isCommentActive, setIsCommentActive] = useState(false);
-    const [buttonDelete, setButtonDelete] = useState(false)
+    const [buttonDelete, setButtonDelete] = useState(false);
+    const [loadingDeletePost, setLoadingDeletePost] = useState(false);
 
     const addData = ()=>{
         const body = {
@@ -28,6 +30,7 @@ const Post = ({postdata, activeDeletePost}) => {
     }
 
     const postDelete = ()=>{
+        setLoadingDeletePost(true)
         deletePost(postdata.postid).then(response=>{
             refetch()
             window.location.reload()
@@ -71,9 +74,12 @@ const Post = ({postdata, activeDeletePost}) => {
                             </div>
                         </Link>
 
-                        {buttonDelete ? <div className='boxDeletePost'> <button className='buttonDeletePost' onClick={postDelete}> delete </button> </div> : null }
+                        {buttonDelete ? !loadingDeletePost && <div className='boxDeletePost'> <button className='buttonDeletePost' onClick={postDelete}> delete </button> </div> : null }
                         
-                        {activeDeletePost && <p className='deletePost' onClick={()=>{setButtonDelete(current => !current)}}> ... </p> }
+                        {activeDeletePost && !loadingDeletePost && <p className='deletePost' onClick={()=>{setButtonDelete(current => !current)}}> ... </p> }
+
+                        {loadingDeletePost && <div className='loadDeletePost'> <Load/> </div>}
+
                     </div>
                     <div className='contentPost'>
                         {postdata.content && <p>{postdata.content}</p>}

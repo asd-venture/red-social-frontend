@@ -1,9 +1,9 @@
 import { useInfiniteQuery } from 'react-query'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { postsApi } from '../apis/postsApi'
-import Post from './Post'
-import PostsLoading from './PostsLoading'
-import '../styles/posts.css'
+import { postsApi } from '../../apis/postsApi'
+import Post from '../postsComp/Post'
+import PostsLoading from '../postsComp/PostsLoading'
+import '../../styles/home/posts.css'
 
 const Posts = () => {
 
